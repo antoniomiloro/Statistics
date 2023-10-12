@@ -128,7 +128,7 @@
                     g.DrawLine(pen, 50, 50, 200, 50);
             
                     // Draw a point
-                    g.FillEllipse(Brushes.Red, 100, 100, 5, 5);
+                    g.FillEllipse(Brushes.Brown, 100, 100, 5, 5);
             
                     // Draw a circle
                     g.DrawEllipse(pen, 150, 150, 100, 100);
@@ -242,25 +242,25 @@
                     context.beginPath();
                     context.moveTo(50, 50);
                     context.lineTo(200, 50);
-                    context.strokeStyle = "black";
+                    context.strokeStyle = "red";
                     context.stroke();
             
                     // Draw a point
                     context.beginPath();
                     context.arc(100, 100, 3, 0, 2 * Math.PI, false);
-                    context.fillStyle = "red";
+                    context.fillStyle = "brown";
                     context.fill();
             
                     // Draw a circle
                     context.beginPath();
                     context.arc(150, 150, 50, 0, 2 * Math.PI, false);
-                    context.strokeStyle = "blue";
+                    context.strokeStyle = "green";
                     context.stroke();
             
                     // Draw a rectangle
                     context.beginPath();
                     context.rect(50, 200, 150, 100);
-                    context.strokeStyle = "green";
+                    context.strokeStyle = "blue";
                     context.stroke();
                 </script>
             </body>
