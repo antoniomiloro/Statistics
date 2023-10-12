@@ -94,5 +94,176 @@
             (4) Design of experiments - Wikipedia. https://en.wikipedia.org/wiki/Design_of_experiments. <br>
             (5) Experimental Design: Types, Examples & Methods - Simply Psychology. https://www.simplypsychology.org/experimental-designs.html.
         </h4>
+        <br><br>
+        <h1>Coding part</h1>
+        <li>
+            <label for="question6" style="font-size: 16px; font-weight: bold;">Write a program in C# that creates a window containing a line, point, circle, rectangle.</label>
+        </li>
+        <pre><code>
+
+            using System;
+            using System.Drawing;
+            using System.Windows.Forms;
+            
+            class DrawingForm : Form
+            {
+                public DrawingForm()
+                {
+                    // Set the title of the window
+                    Text = "Drawing Shapes";
+            
+                    // Set the size of the window
+                    ClientSize = new Size(400, 400);
+                }
+            
+                protected override void OnPaint(PaintEventArgs e)
+                {
+                    base.OnPaint(e);
+                    Graphics g = e.Graphics;
+            
+                    // Create a Pen for drawing shapes
+                    Pen pen = new Pen(Color.Black);
+            
+                    // Draw a line
+                    g.DrawLine(pen, 50, 50, 200, 50);
+            
+                    // Draw a point
+                    g.FillEllipse(Brushes.Red, 100, 100, 5, 5);
+            
+                    // Draw a circle
+                    g.DrawEllipse(pen, 150, 150, 100, 100);
+            
+                    // Draw a rectangle
+                    g.DrawRectangle(pen, 50, 200, 150, 100);
+            
+                    // Dispose of the Pen
+                    pen.Dispose();
+                }
+            
+                public static void Main()
+                {
+                    Application.Run(new DrawingForm());
+                }
+            }
+            <head>
+                <title>Canvas Drawing</title>
+            </head>
+            <body>
+                <iframe srcdoc='
+                    <html>
+                    <head>
+                        <title>Canvas Drawing</title>
+                    </head>
+                    <body>
+                        <canvas id="myCanvas" width="400" height="400"></canvas>
+                        <script>
+                            // Get a reference to the canvas element
+                            var canvas = document.getElementById("myCanvas");
+                            var context = canvas.getContext("2d");
+            
+                            // Draw a line
+                            context.beginPath();
+                            context.moveTo(50, 50);
+                            context.lineTo(200, 50);
+                            context.strokeStyle = "black";
+                            context.stroke();
+            
+                            // Draw a point
+                            context.beginPath();
+                            context.arc(100, 100, 3, 0, 2 * Math.PI, false);
+                            context.fillStyle = "red";
+                            context.fill();
+            
+                            // Draw a circle
+                            context.beginPath();
+                            context.arc(150, 150, 50, 0, 2 * Math.PI, false);
+                            context.strokeStyle = "blue";
+                            context.stroke();
+            
+                            // Draw a rectangle
+                            context.beginPath();
+                            context.rect(50, 200, 150, 100);
+                            context.strokeStyle = "green";
+                            context.stroke();
+                        </script>
+                    </body>
+                    </html>
+                ' style="border: none; width: 400px; height: 400px;"></iframe>
+            </body>
+                        </code></pre>
+                                   <li>
+                            <label for="question6" style="font-size: 16px; font-weight: bold;">Write a program in JavaScript that creates a window containing a line, point, circle, rectangle.</label>
+                        </li>
+            </ol>
+                        <pre><code>
+                <pre>
+                    <code>
+                        // Get a reference to the canvas element
+                        var canvas = document.getElementById("myCanvas");
+                        var context = canvas.getContext("2d");
+            
+                        // Draw a line
+                        context.beginPath();
+                        context.moveTo(50, 50);
+                        context.lineTo(200, 50);
+                        context.strokeStyle = "black";
+                        context.stroke();
+            
+                        // Draw a point
+                        context.beginPath();
+                        context.arc(100, 100, 3, 0, 2 * Math.PI, false);
+                        context.fillStyle = "red";
+                        context.fill();
+            
+                        // Draw a circle
+                        context.beginPath();
+                        context.arc(150, 150, 50, 0, 2 * Math.PI, false);
+                        context.strokeStyle = "blue";
+                        context.stroke();
+            
+                        // Draw a rectangle
+                        context.beginPath();
+                        context.rect(50, 200, 150, 100);
+                        context.strokeStyle = "green";
+                        context.stroke();
+                    </code>
+                </pre>
+            <head>
+                <title>Canvas Drawing</title>
+            </head>
+            <body>
+                <canvas id="myCanvas" width="400" height="400"></canvas>
+                <script>
+                    // Get a reference to the canvas element
+                    var canvas = document.getElementById("myCanvas");
+                    var context = canvas.getContext("2d");
+            
+                    // Draw a line
+                    context.beginPath();
+                    context.moveTo(50, 50);
+                    context.lineTo(200, 50);
+                    context.strokeStyle = "black";
+                    context.stroke();
+            
+                    // Draw a point
+                    context.beginPath();
+                    context.arc(100, 100, 3, 0, 2 * Math.PI, false);
+                    context.fillStyle = "red";
+                    context.fill();
+            
+                    // Draw a circle
+                    context.beginPath();
+                    context.arc(150, 150, 50, 0, 2 * Math.PI, false);
+                    context.strokeStyle = "blue";
+                    context.stroke();
+            
+                    // Draw a rectangle
+                    context.beginPath();
+                    context.rect(50, 200, 150, 100);
+                    context.strokeStyle = "green";
+                    context.stroke();
+                </script>
+            </body>
+            </html>
     </body>
 </html>
