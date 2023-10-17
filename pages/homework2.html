@@ -13,11 +13,11 @@
         <h1>Esercizio 1</h1> 
         
 
-        <br><br>
+        <br><br><br>
         <h1>Esercizio 2</h1> 
         <h5>To view the code of Cheatsheet, visit the page: <a href="./cheatsheet.html">Cheatsheet</a></h5>
         
-        <br><br>
+        <br><br><br>
         <h1>Esercizio 3</h1> 
         <head>
             <title>Uniform Random Variates Distribution</title>
@@ -91,51 +91,78 @@
             </script>
         </body>
 
-        <br>
+        <br><br><br>
         <h4>C#</h4>
-        <pre>
-            <code>
-                using System;
-                using System.Collections.Generic;
 
-                class Program
+        <head>
+            <style>
+                table {
+                    border-collapse: collapse;
+                    width: 50%;
+                }
+                th, td {
+                    border: 1px solid black;
+                    text-align: center;
+                    padding: 8px;
+                }
+            </style>
+        </head>
+        <body>
+            <h2>C# Code for Generating Uniform Random Variates and Analyzing Distribution</h2>
+
+            <table>
+                <tr>
+                    <th>Step</th>
+                    <th>Code</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <pre>
+        using System;
+        using System.Collections.Generic;
+
+        class Program
+        {
+            static void Main()
+            {
+                int N = 1000; // Number of random variates
+                int k = 10;   // Number of class intervals
+
+                Random random = new Random();
+                List&lt;double&gt; randomNumbers = new List&lt;double&gt;();
+
+                // Generate N random numbers between 0 and 1
+                for (int i = 0; i &lt; N; i++)
                 {
-                    static void Main()
-                    {
-                        int N = 1000; // Number of random variates
-                        int k = 10;   // Number of class intervals
-
-                        Random random = new Random();
-                        List<double> randomNumbers = new List<double>();
-
-                        // Generate N random numbers between 0 and 1
-                        for (int i = 0; i < N; i++)
-                        {
-                            double randomNumber = random.NextDouble();
-                            randomNumbers.Add(randomNumber);
-                        }
-
-                        // Create an array to count the frequency of each interval
-                        int[] intervalCount = new int[k];
-
-                        // Determine the distribution into class intervals
-                        for (int i = 0; i < N; i++)
-                        {
-                            int intervalIndex = (int)(randomNumbers[i] * k);
-                            intervalCount[intervalIndex]++;
-                        }
-
-                        // Calculate the relative frequency of each interval
-                        for (int i = 0; i < k; i++)
-                        {
-                            double relativeFrequency = (double)intervalCount[i] / N;
-                            Console.WriteLine($"Interval {i}: {relativeFrequency:P}");
-                        }
-                    }
+                    double randomNumber = random.NextDouble();
+                    randomNumbers.Add(randomNumber);
                 }
 
-            </code>
-        </pre>
+                // Create an array to count the frequency of each interval
+                int[] intervalCount = new int[k];
+
+                // Determine the distribution into class intervals
+                for (int i = 0; i &lt; N; i++)
+                {
+                    int intervalIndex = (int)(randomNumbers[i] * k);
+                    intervalCount[intervalIndex]++;
+                }
+
+                // Calculate the relative frequency of each interval
+                for (int i = 0; i &lt; k; i++)
+                {
+                    double relativeFrequency = (double)intervalCount[i] / N;
+                    Console.WriteLine($"Interval {i}: {relativeFrequency:P}");
+                }
+            }
+        }
+                        </pre>
+                    </td>
+                </tr>
+            </table>
+        </body>
+
   
 
     </body>
