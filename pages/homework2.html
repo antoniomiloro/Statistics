@@ -406,63 +406,71 @@
                 </code>
             </pre>
         <h1>Esercizio 3</h1> 
-
-<head>
-    <title>Uniform Random Variates Distribution</title>
-</head>
-<body>
-    <div>
-        <label for="nInput">N:</label>
-        <input type="number" id="nInput" value="100">
-        <label for="kInput">k:</label>
-        <input type="number" id="kInput" value="10">
-        <button onclick="updateHistogram()">Genera</button>
-    </div>
-    <canvas id="histogram" width="400" height="300"></canvas>
-
-    <script>
-        // Funzione per generare e disegnare l'istogramma
-        function updateHistogram() {
-            const N = parseInt(document.getElementById("nInput").value);
-            const k = parseInt(document.getElementById("kInput").value);
-
-            // Genera N random variates
-            const data = Array.from({ length: N }, () => Math.random());
-
-            // Calcola l'istogramma
-            const histogram = Array.from({ length: k }, (_, i) => {
-                const lowerBound = i / k;
-                const upperBound = (i + 1) / k;
-                return data.filter(value => value >= lowerBound && value < upperBound).length / N;
-            });
-
-            // Ottieni il canvas
-            const canvas = document.getElementById("histogram");
-            const context = canvas.getContext("2d");
-
-            // Prepara il canvas per il disegno
-            const canvasWidth = canvas.width;
-            const canvasHeight = canvas.height;
-            context.clearRect(0, 0, canvasWidth, canvasHeight);
-            context.fillStyle = "blue";
-            context.font = "12px Arial";
-            context.canvasWidth = 1;
-
-            // Disegna l'istogramma
-            for (let i = 0; i < k; i++) {
-                const barHeight = canvasHeight * histogram[i];
-                const barWidth = canvasWidth / k;
-                const x = i * barWidth;
-                const y = canvasHeight - barHeight;
-                context.fillRect(x, y, barWidth, barHeight);
-                context.fillText(`${(i / k).toFixed(2)}-${((i + 1) / k).toFixed(2)}`, x, canvasHeight - 5);
-            }
-        }
-
-        // Genera e disegna l'istogramma all'avvio della pagina
-        updateHistogram();
-    </script>
-</body>
+        <head>
+            <title>Uniform Random Variates Distribution</title>
+            <style>
+                .input-container {
+                    display: flex;
+                    align-items: center;
+                }
+                .input-container label, .input-container input, .input-container button {
+                    margin-right: 10px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="input-container">
+                <label for="nInput">N:</label>
+                <input type="number" id="nInput" value="100">
+                <label for="kInput">k:</label>
+                <input type="number" id="kInput" value="10">
+                <button onclick="updateHistogram()">Genera</button>
+            </div>
+            <canvas id="histogram" width="400" height="300"></canvas>
+        
+            <script>
+                // Funzione per generare e disegnare l'istogramma
+                function updateHistogram() {
+                    const N = parseInt(document.getElementById("nInput").value);
+                    const k = parseInt(document.getElementById("kInput").value);
+        
+                    // Genera N random variates
+                    const data = Array.from({ length: N }, () => Math.random());
+        
+                    // Calcola l'istogramma
+                    const histogram = Array.from({ length: k }, (_, i) => {
+                        const lowerBound = i / k;
+                        const upperBound = (i + 1) / k;
+                        return data.filter(value => value >= lowerBound && value < upperBound).length / N;
+                    });
+        
+                    // Ottieni il canvas
+                    const canvas = document.getElementById("histogram");
+                    const context = canvas.getContext("2d");
+        
+                    // Prepara il canvas per il disegno
+                    const canvasWidth = canvas.width;
+                    const canvasHeight = canvas.height;
+                    context.clearRect(0, 0, canvasWidth, canvasHeight);
+                    context.fillStyle = "blue";
+                    context.font = "12px Arial";
+        
+                    // Disegna l'istogramma
+                    for (let i = 0; i < k; i++) {
+                        const barHeight = canvasHeight * histogram[i];
+                        const barWidth = canvasWidth / k;
+                        const x = i * barWidth;
+                        const y = canvasHeight - barHeight;
+                        context.fillRect(x, y, barWidth, barHeight);
+                        context.fillText(`${(i / k).toFixed(2)}-${((i + 1) / k).toFixed(2)}`, x, canvasHeight - 5);
+                    }
+                }
+        
+                // Genera e disegna l'istogramma all'avvio della pagina
+                updateHistogram();
+            </script>
+        </body>
+        
 
     </body>
 </html>
