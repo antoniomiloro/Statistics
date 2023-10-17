@@ -92,7 +92,6 @@
         </body>
 
         <br><br><br>
-        <h4>C#</h4>
 
         <head>
             <style>
@@ -108,7 +107,7 @@
             </style>
         </head>
         <body>
-            <h2>C# Code for Generating Uniform Random Variates and Analyzing Distribution</h2>
+            <h4>C# Code for Generating Uniform Random Variates and Analyzing Distribution</h4>
 
             <table>
                 <tr>
@@ -119,44 +118,44 @@
                     <td>1</td>
                     <td>
                         <pre>
-        using System;
-        using System.Collections.Generic;
+                            using System;
+                            using System.Collections.Generic;
 
-        class Program
-        {
-            static void Main()
-            {
-                int N = 1000; // Number of random variates
-                int k = 10;   // Number of class intervals
+                            class Program
+                            {
+                                static void Main()
+                                {
+                                    int N = 1000; // Number of random variates
+                                    int k = 10;   // Number of class intervals
 
-                Random random = new Random();
-                List&lt;double&gt; randomNumbers = new List&lt;double&gt;();
+                                    Random random = new Random();
+                                    List&lt;double&gt; randomNumbers = new List&lt;double&gt;();
 
-                // Generate N random numbers between 0 and 1
-                for (int i = 0; i &lt; N; i++)
-                {
-                    double randomNumber = random.NextDouble();
-                    randomNumbers.Add(randomNumber);
-                }
+                                    // Generate N random numbers between 0 and 1
+                                    for (int i = 0; i &lt; N; i++)
+                                    {
+                                        double randomNumber = random.NextDouble();
+                                        randomNumbers.Add(randomNumber);
+                                    }
 
-                // Create an array to count the frequency of each interval
-                int[] intervalCount = new int[k];
+                                    // Create an array to count the frequency of each interval
+                                    int[] intervalCount = new int[k];
 
-                // Determine the distribution into class intervals
-                for (int i = 0; i &lt; N; i++)
-                {
-                    int intervalIndex = (int)(randomNumbers[i] * k);
-                    intervalCount[intervalIndex]++;
-                }
+                                    // Determine the distribution into class intervals
+                                    for (int i = 0; i &lt; N; i++)
+                                    {
+                                        int intervalIndex = (int)(randomNumbers[i] * k);
+                                        intervalCount[intervalIndex]++;
+                                    }
 
-                // Calculate the relative frequency of each interval
-                for (int i = 0; i &lt; k; i++)
-                {
-                    double relativeFrequency = (double)intervalCount[i] / N;
-                    Console.WriteLine($"Interval {i}: {relativeFrequency:P}");
-                }
-            }
-        }
+                                    // Calculate the relative frequency of each interval
+                                    for (int i = 0; i &lt; k; i++)
+                                    {
+                                        double relativeFrequency = (double)intervalCount[i] / N;
+                                        Console.WriteLine($"Interval {i}: {relativeFrequency:P}");
+                                    }
+                                }
+                            }
                         </pre>
                     </td>
                 </tr>
