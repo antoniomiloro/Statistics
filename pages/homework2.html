@@ -11,10 +11,9 @@
     </head>
     <body>
         <h1>Esercizio 1</h1> 
-        <h4>JavaScript</h4>
         
 
-
+        <br><br>
         <h1>Esercizio 2</h1> 
         <h5>To view the code of Cheatsheet, visit the page: <a href="./cheatsheet.html">Cheatsheet</a></h5>
         
@@ -92,7 +91,52 @@
             </script>
         </body>
 
-        
+        <br>
+        <h4>C#</h4>
+        <pre>
+            <code>
+                using System;
+                using System.Collections.Generic;
+
+                class Program
+                {
+                    static void Main()
+                    {
+                        int N = 1000; // Number of random variates
+                        int k = 10;   // Number of class intervals
+
+                        Random random = new Random();
+                        List<double> randomNumbers = new List<double>();
+
+                        // Generate N random numbers between 0 and 1
+                        for (int i = 0; i < N; i++)
+                        {
+                            double randomNumber = random.NextDouble();
+                            randomNumbers.Add(randomNumber);
+                        }
+
+                        // Create an array to count the frequency of each interval
+                        int[] intervalCount = new int[k];
+
+                        // Determine the distribution into class intervals
+                        for (int i = 0; i < N; i++)
+                        {
+                            int intervalIndex = (int)(randomNumbers[i] * k);
+                            intervalCount[intervalIndex]++;
+                        }
+
+                        // Calculate the relative frequency of each interval
+                        for (int i = 0; i < k; i++)
+                        {
+                            double relativeFrequency = (double)intervalCount[i] / N;
+                            Console.WriteLine($"Interval {i}: {relativeFrequency:P}");
+                        }
+                    }
+                }
+
+            </code>
+        </pre>
+  
 
     </body>
 </html>
