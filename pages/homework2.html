@@ -413,7 +413,7 @@
 <body>
     <div>
         <label for="nInput">N:</label>
-        <input type="number" id="nInput" value="10000">
+        <input type="number" id="nInput" value="100">
         <label for="kInput">k:</label>
         <input type="number" id="kInput" value="10">
         <button onclick="updateHistogram()">Genera</button>
@@ -446,6 +446,7 @@
             context.clearRect(0, 0, canvasWidth, canvasHeight);
             context.fillStyle = "blue";
             context.font = "12px Arial";
+            context.canvasWidth = 1;
 
             // Disegna l'istogramma
             for (let i = 0; i < k; i++) {
