@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Statistics</title>
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+    </head>
+    <body>
+    <h4>Cheatsheet C#</h4>
+    <pre>
+        <code>
+            using System;
+            using System.Collections.Generic;
+            using System.Collections;
+            
+            namespace data_structures_cheatsheet
+            {
+                public partial class Form1 : Form
+                {
+                    public Form1()
+                    {
+                        InitializeComponent();
+                    }
+            
+                    private void Form1_Load(object sender, EventArgs e)
+                    {
+                        
+                    /*ARRAY*/
+                    int[] array = new int[5];
+
+                    // add elements
+                    array[0] = 1;
+                    array[1] = 2;
+                    array[2] = 3;
+                    array[3] = 4;
+                    array[4] = 5;
+        
+                    // loop
+                    foreach (var item in array)
+                    {
+                        Console.WriteLine(item);
+                    }
+        
+                    // remove elements 
+                    int removeIndex = 2;
+                    int[] newArray = new int[4];
+                    for(int i = 0; i < newArray.Length; i++)
+                    {
+                        if (i == removeIndex) continue;
+        
+                        newArray[i] = array[i];
+                    }
+        
+                    // check existance
+                    array.Contains(0);
+        
+                    // retreive elements
+                    Console.WriteLine(array[0]);
+                    Console.WriteLine(array[1]);
+
+
+
+                    /*SORTED LIST*/
+                    // initialization
+                    SortedList sl = new SortedList();
+        
+                    // add elements
+                    sl.Add("a", 1);
+                    sl.Add("b", 6);
+                    sl.Add("c", 0);
+                    sl.Add("d", 0);
+        
+                    // loop 
+                    foreach (DictionaryEntry pair in sl)
+                        Console.WriteLine("{0} and {1}", pair.Key, pair.Value);
+        
+                    // remove elements 
+                    sl.Remove(6);
+                    sl.Remove(0);
+        
+                    // check existance
+                    sl.ContainsKey(0);
+        
+                    // retreive elements
+                    Console.WriteLine(sl["a"]);
+                    Console.WriteLine(sl["b"]);
+
+
+
+                    /*DICTIONARY*/
+                    // initialization
+                    Dictionary<string, int> dict = new Dictionary<string, int>();
+        
+                    // add elements
+                    dict.Add("Age", 23);
+                    dict.Add("Height", 172);
+        
+                    // loop
+                    foreach(KeyValuePair<string, int> kvp in dict)
+                        Console.WriteLine("{0} and {1}", kvp.Key, kvp.Value);
+        
+                    // remove elements 
+                    dict.Remove("Age");
+                    dict.Remove("Height");
+        
+                    // check existance
+                    dict.ContainsKey("Age");
+        
+                    // retreive elements
+                    Console.WriteLine(dict["Age"]);
+                    Console.WriteLine(dict["Height"]);
+
+
+
+                    /*HASH SET*/
+                    // initialization
+                    HashSet<int> hs = new HashSet<int>();
+        
+                    // add elements
+                    hs.Add(1);
+                    hs.Add(64);
+                    hs.Add(128);
+        
+                    // loop 
+                    foreach(int i in hs)
+                        Console.WriteLine(i);
+        
+                    // remove elements 
+                    hs.Remove(1);      
+                    hs.Remove(64);   
+        
+                    // check existance
+                    hs.Contains(1);
+        
+                    // retreive elements
+                    Console.WriteLine();
+        
+
+
+                    /*STACK*/
+                    // initialization
+                    var stack = new Stack();
+        
+                    // add elements
+                    stack.Push(1);
+                    stack.Push(6);
+                    stack.Push(0);
+                    stack.Push(0);
+        
+                    // loop 
+                    foreach (Object o in stack)
+                        Console.WriteLine(o);
+        
+                    // remove elements 
+                    stack.Pop();
+        
+                    // check existance
+                    stack.Contains(0);
+        
+                    //retreive element
+                    Console.WriteLine(stack.Peek());
+
+
+
+                    /*QUEUE*/
+                    // initialization
+                    var queue = new Queue();
+        
+                    // add elements
+                    queue.Enqueue(1);
+                    queue.Enqueue(6);
+                    queue.Enqueue(0);
+                    queue.Enqueue(0);
+        
+                    // loop 
+                    foreach (Object o in queue)
+                        Console.WriteLine(o);
+        
+                    // remove elements 
+                    queue.Dequeue();
+                    queue.Dequeue();
+        
+                    // check existance
+                    queue.Contains(0);
+        
+                    // retreive elements
+                    Console.WriteLine(queue.Peek());
+
+
+
+                    /* LINKED LIST */
+                    // initialization
+                    LinkedList<int> ll = new LinkedList<int>();
+        
+                    // add elements
+                    ll.AddLast(1);
+                    ll.AddFirst(6);
+                    ll.AddAfter(ll.Find(6), 4);
+        
+                    // loop
+                    foreach (int str in ll)
+                    {
+                        Console.WriteLine(str);
+                    }
+        
+                    // remove elements
+                    ll.RemoveLast();
+                    ll.RemoveFirst();
+        
+                    // check existance
+                    ll.Find(7);
+        
+                    // retrieve elements
+                    Console.WriteLine(ll.Find(4));
+                    }
+                }           
+            }
+
+        </code>
+    </pre>
+
+<h4>Cheatsheet JavaScript</h4>
+    <pre>
+        <code>
+            /* ARRAY AND LISTS */
+            // initialization
+            var array = [];
+            
+            // add elements
+            array.push(1);
+            array.push(6);
+            array.push(0);
+            array.push(0);
+            
+            // loop 
+            array.forEach((value) =>{
+                console.log(value);
+            })
+            
+            // remove elements 
+            array.pop();       
+            array.slice(2, 1)   
+            
+            // check existance
+            array.includes(0);
+            
+            // retreive elements
+            console.log(array[0]);
+            console.log(array[1]);
+            
+            
+            
+            /*SORTED LIST*/
+            // initialization
+            var sl = new SortedList();
+            
+            // add elements
+            sl.insert(1);
+            sl.insert(6);
+            sl.insert(0);
+            sl.insert(0);
+            
+            // loop 
+            console.log("sorted list = [" + sl.print() + "]");
+            
+            // remove elements 
+            sl.remove(6)  
+            sl.remove(0)  
+            
+            // check existance
+            sl.exists(0);
+            
+            // retreive elements
+            console.log(array[0]);
+            console.log(array[1]);
+            
+            
+                                
+            /*DICTIONARY*/  
+            // initialization
+            var dict = {};
+            
+            // add elements
+            dict["Age"] = 23;
+            dict.Height = 172;
+            
+            // loop 
+            for (var key in dict) { 
+                console.log(dict[key])
+            }
+            
+            // remove elements 
+            delete "Age";
+            delete dict.Height;
+            
+            // check existance
+            dict.hasOwnProperty('Age');
+            
+            // retreive elements
+            console.log(dict["Age"]);
+            console.log(dict.Height);
+            
+            
+            
+            /*HASH SET*/
+            // initialization
+            var set = new Set();
+            
+            // add elements
+            set.add(1);
+            set.add("cat")
+            set.add({Age: 23, Height: 173});
+            
+            // loop 
+            set.forEach((value) =>{
+                console.log(value);
+            })
+            
+            // remove elements 
+            set.delete(1);        // at the bottom
+            set.delete("cat")   // remvove second element 
+            
+            // check existance
+            set.has(1);
+            
+            // retreive elements
+            console.log(set);
+            
+            
+                
+            /*STACK*/
+            // initialization
+            var stack = new Stack();
+            
+            // add elements
+            stack.push(1);
+            stack.push(6);
+            stack.push(0);
+            stack.push(0);
+            
+            // loop 
+            stack.print();
+            
+            // remove elements 
+            stack.pop();       
+            
+            // check existance
+            stack.exists(0);
+            
+            //retreive element
+            stack.peek();
+            
+                
+            
+            /*QUEUE*/ 
+            // initialization
+            var queue = new Queue();
+            
+            // add elements
+            queue.enqueue(1);
+            queue.enqueue(6);
+            queue.enqueue(0);
+            queue.enqueue(0);
+            
+            // loop 
+            queue.print();
+            
+            // remove elements 
+            queue.dequeue();
+            queue.dequeue();
+            
+            // check existance
+            queue.exists(0);
+            
+            // retreive elements
+            console.log(queue.front());
+            
+            
+                    
+            /* LINKED LIST */      
+            // initialization
+            var linkedList = new LinkedList();
+            
+            // add elements
+            linkedList.add(1);
+            linkedList.add(6);
+            linkedList.add(0);
+            
+            // loop
+            linkedList.print();
+            
+            // remove elements
+            linkedList.removeElement(0);
+            linkedList.removeElement(6);
+            
+            // check existance
+            linkedList.exists(0);
+            
+            // retrieve elements
+            console.log(linkedList.retrieve(2))
+
+        </code>
+    </pre>
+    </body>
+</html>
