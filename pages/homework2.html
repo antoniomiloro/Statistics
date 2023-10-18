@@ -11,7 +11,136 @@
     </head>
     <body>
         <h1>Esercizio 1</h1> 
-        
+        <h2>1. Choose 3 variables from our surveys:
+            - one Qualitative
+            - one Quantitative discrete
+            - one Quantitative continuous (use class intervals in this case, obviously)
+            
+            create the most efficient algorithms to compute the frequency (absolute/relative/percentage) distribution of:
+            
+            - the 3 variables
+            - the joint distribution of 2 variables</h2>
+        <h4>C# program</h4>
+        <pre>
+            <code>
+                using System;
+                using System.Collections.Generic;
+                using System.IO;
+                using System.Linq;
+
+                class Program
+                {
+                    static void Main()
+                    {
+                        string projectDirectory = "YOUR PROJECT DIRECTORY";
+                        
+                        string degreesPath = Path.Combine(projectDirectory, "degrees.txt");
+                        string ambitiousnessPath = Path.Combine(projectDirectory, "ambitiousness.txt");
+                        string heightsPath = Path.Combine(projectDirectory, "heights.txt");
+
+                        string degreesData = File.ReadAllText(degreesPath);
+                        string ambitiousnessData = File.ReadAllText(ambitiousnessPath);
+                        string heightsData = File.ReadAllText(heightsPath);
+
+                        Dictionary heightsFrequencies = CalculateFrequencies(heightsData);
+                        PrintFrequencies(heightsFrequencies, "---Height Frequencies---");
+
+                        Dictionary degreesFrequencies = CalculateFrequencies(degreesData);
+                        PrintFrequencies(degreesFrequencies, "---Background Degree Frequencies---");
+
+                        Dictionary ambitiousnessFrequencies = CalculateFrequencies(ambitiousnessData);
+                        PrintFrequencies(ambitiousnessFrequencies, "---Ambitious Values Frequencies---");
+
+                        List dataArrays = new List
+                        {
+                            ambitiousnessData.Split('\n'),
+                            heightsData.Split('\n')
+                        };
+
+                        Dictionary jointDistribution = CalculateJointDistribution(dataArrays);
+                        PrintJointDistribution(jointDistribution, "---Joint Distribution of Ambitiousness and Height (Data: A | H)---");
+
+                        dataArrays.Add(degreesData.Split('\n'));
+
+                        Dictionary jointDistributions = CalculateJointDistribution(dataArrays);
+                        PrintJointDistribution(jointDistributions, "---Joint Distribution OF 3 VARIABLES---");
+                    }
+
+                    static Dictionary CalculateFrequencies(string text)
+                    {
+                        var frequencies = new Dictionary();
+                        var lines = text.Split('\n');
+
+                        foreach (var line in lines)
+                        {
+                            var item = line.ToLower().Trim();
+
+                            if (frequencies.ContainsKey(item))
+                            {
+                                frequencies[item]++;
+                            }
+                            else
+                            {
+                                frequencies[item] = 1;
+                            }
+                        }
+
+                        return frequencies;
+                    }
+
+                    static void PrintFrequencies(Dictionary frequencies, string title)
+                    {
+                        Console.WriteLine($"\n{title}\n");
+                        int total = frequencies.Values.Sum();
+
+                        foreach (var item in frequencies)
+                        {
+                            double relativeFrequency = (double)item.Value / total;
+                            double percentage = relativeFrequency * 100;
+                            Console.WriteLine($"{item.Key}: {item.Value} (Relative: {relativeFrequency:F2}, Percentage: {percentage:F2}%)");
+                        }
+                    }
+
+                    static Dictionary CalculateJointDistribution(List dataArrays)
+                    {
+                        var jointDistribution = new Dictionary();
+                        int numVariables = dataArrays.Count;
+
+                        for (int i = 0; i < dataArrays[0].Length; i++)
+                        {
+                            var values = dataArrays.Select(dataArray => dataArray[i].ToLower().Trim()).ToList();
+                            var key = string.Join("|", values);
+
+                            if (jointDistribution.ContainsKey(key))
+                            {
+                                jointDistribution[key]++;
+                            }
+                            else
+                            {
+                                jointDistribution[key] = 1;
+                            }
+                        }
+
+                        return jointDistribution;
+                    }
+
+                    static void PrintJointDistribution(Dictionary jointDistribution, string title)
+                    {
+                        Console.WriteLine($"\n{title}\n");
+                        int total = jointDistribution.Values.Sum();
+
+                        foreach (var item in jointDistribution)
+                        {
+                            var values = item.Key.Split('|');
+                            double relativeFrequency = (double)item.Value / total;
+                            double percentage = relativeFrequency * 100;
+                            Console.WriteLine($"Data: {string.Join(", ", values)} \t Frequency: {item.Value}, Relative Frequency: {relativeFrequency:F2}, Percentage: {percentage:F2}%");
+                        }
+                    }
+                }
+
+            </code>
+        </pre>
 
         <br><br><br>
         <h1>Esercizio 2</h1> 
