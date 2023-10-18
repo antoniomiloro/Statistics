@@ -237,6 +237,188 @@
 
             </code>
         </pre>
+        <br>
+        <h4>JavaScript program</h4>
+        <h5>As qualitative variable I chose the variable Background degree from the survey Professional life. 
+            As discrete quantitative variable I chose the variable Ambitious from the survey Professional life. 
+            As continuous quantitative variable I chose the variable Height from the survey Personal life.
+            In our survey the answer to this question is a number from 0 to 5. 
+            This is the code to compute the frequency distribution and the joint distribution of the variables:</h5>
+            <pre>
+                <code>
+                    const fs = require('fs');
+                    function calculateFrequencies(text) {
+                    const frequencies = {};
+
+                    const lines = text.split('\n');
+
+                    for (const line of lines) {
+                        const item = line.toLowerCase().trim();
+
+                        if (frequencies[item]) {
+                        frequencies[item]++;
+                        } else {
+                        frequencies[item] = 1;
+                        }
+                    }
+
+                    return frequencies;
+                    }
+
+                    function printFrequencies(frequencies, title) {
+                    console.log(`\n${title}\n`);
+                    const total = Object.values(frequencies).reduce((acc, value) => acc + value, 0);
+
+                    for (const item in frequencies) {
+                        const frequency = frequencies[item];
+                        const relativeFrequency = frequency / total;
+                        const percentage = (relativeFrequency * 100).toFixed(2);
+
+                        console.log(`${item}: ${frequency} (Relative: ${relativeFrequency.toFixed(2)}, Percentage: ${percentage}%)`);
+                    }
+                    }
+
+                    function calculateJointDistribution(dataArrays) {
+                    const jointDistribution = {};
+
+                    const numVariables = dataArrays.length;
+
+                    for (let i = 0; i < dataArrays[0].length; i++) {
+                        const values = dataArrays.map((dataArray) =>
+                        dataArray[i].toLowerCase().trim()
+                        );
+
+                        const key = values.join('|');
+
+                        if (!jointDistribution[key]) {
+                        jointDistribution[key] = 1;
+                        } else {
+                        jointDistribution[key]++;
+                        }
+                    }
+
+                    return jointDistribution;
+                    }
+
+                    function printJointDistribution(jointDistribution, title) {
+                    console.log(`\n${title}\n`);
+                    for (const key in jointDistribution) {
+                        const frequency = jointDistribution[key];
+                        const values = key.split('|');
+                        const total = Object.values(jointDistribution).reduce(
+                        (acc, value) => acc + value,
+                        0
+                        );
+                        const relativeFrequency = frequency / total;
+                        const percentage = (relativeFrequency * 100).toFixed(2);
+
+                        console.log(
+                        `Data: ${values.join(', ')} \t Frequency: ${frequency}, Relative Frequency: ${relativeFrequency.toFixed(2)}%, Percentage: ${percentage}%`
+                        );
+                    }
+                    }
+
+                    fs.readFile('degrees.txt', 'utf8', (err1, degreesData) => {
+                    if (err1) {
+                        console.error('Errore nella lettura del file "degrees.txt"', err1);
+                        return;
+                    }
+
+                    fs.readFile('ambitiousness.txt', 'utf8', (err2, ambitiousnessData) => {
+                        if (err2) {
+                        console.error('Errore nella lettura del file "ambitiousness.txt"', err2);
+                        return;
+                        }
+
+                        fs.readFile('heights.txt', 'utf8', (err3, heightsData) => {
+                        if (err3) {
+                            console.error('Errore nella lettura del file "heights.txt"', err3);
+                            return;
+                        }
+
+                        const heightsFrequencies = calculateFrequencies(heightsData);
+                        printFrequencies(heightsFrequencies, '---Height Frequencies---');
+
+                        const degreesFrequencies = calculateFrequencies(degreesData);
+                        printFrequencies(degreesFrequencies, '---Background Degree Frequencies---');
+
+                        const valuesFrequencies = calculateFrequencies(ambitiousnessData);
+                        printFrequencies(valuesFrequencies, '---Ambitious Values Frequencies---');
+
+                        const jointDistribution = calculateJointDistribution([
+                            ambitiousnessData.split('\n'),
+                            heightsData.split('\n')
+                        ]);
+                        printJointDistribution(jointDistribution, '---Joint Distribution of Ambitiousness and Height (Data: A | H)---');
+                        });
+                    });
+                    });
+                </code>
+            </pre>
+
+        <h4>Output:</h4>
+            <pre>
+                <code>
+                    ---Height Frequencies---
+
+                    180: 1 (Relative: 0.02, Percentage: 1.75%)
+                    : 40 (Relative: 0.70, Percentage: 70.18%)
+                    1.73: 2 (Relative: 0.04, Percentage: 3.51%)
+                    1.76: 2 (Relative: 0.04, Percentage: 3.51%)
+                    1.8: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.72: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.68: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.81: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.86: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.71: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.65: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.9: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.7: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.78: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.91: 1 (Relative: 0.02, Percentage: 1.75%)
+                    1.82: 1 (Relative: 0.02, Percentage: 1.75%)
+
+                    ---Background Degree Frequencies---
+
+                    engineering in computer science: 2 (Relative: 0.04, Percentage: 3.77%)
+                    computer and system engineering: 1 (Relative: 0.02, Percentage: 1.89%)
+                    computer science: 29 (Relative: 0.55, Percentage: 54.72%)
+                    computer science and engineering: 1 (Relative: 0.02, Percentage: 1.89%)
+                    computer engineering: 11 (Relative: 0.21, Percentage: 20.75%)
+                    software and information engineering: 1 (Relative: 0.02, Percentage: 1.89%)
+                    information engineering, computer science and statistics: 1 (Relative: 0.02, Percentage: 1.89%)
+                    computer sciwence: 1 (Relative: 0.02, Percentage: 1.89%)
+                    international relations: 1 (Relative: 0.02, Percentage: 1.89%)
+                    cybersecurity: 3 (Relative: 0.06, Percentage: 5.66%)
+                    security of information technologies: 1 (Relative: 0.02, Percentage: 1.89%)
+                    conputer engineering: 1 (Relative: 0.02, Percentage: 1.89%)
+
+                    ---Ambitious Values Frequencies---
+
+                    3: 5 (Relative: 0.09, Percentage: 9.43%)
+                    4: 19 (Relative: 0.36, Percentage: 35.85%)
+                    5: 28 (Relative: 0.53, Percentage: 52.83%)
+                    6: 1 (Relative: 0.02, Percentage: 1.89%)
+
+                    ---Joint Distribution of Ambitiousness and Height (Data: A | H)---
+
+                    Data: 4,  	 Frequency: 13, Relative Frequency: 0.25%, Percentage: 24.53%
+                    Data: 5,  	 Frequency: 22, Relative Frequency: 0.42%, Percentage: 41.51%
+                    Data: 5, 1.73 	 Frequency: 2, Relative Frequency: 0.04%, Percentage: 3.77%
+                    Data: 5, 1.76 	 Frequency: 2, Relative Frequency: 0.04%, Percentage: 3.77%
+                    Data: 4, 1.8 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 5, 1.72 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 4, 1.68 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 4, 1.81 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 6,  	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 5, 1.86 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 4, 1.71 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 3,  	 Frequency: 4, Relative Frequency: 0.08%, Percentage: 7.55%
+                    Data: 4, 180 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 3, 1.65 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                    Data: 4, 1.9 	 Frequency: 1, Relative Frequency: 0.02%, Percentage: 1.89%
+                </code>
+            </pre>
 
         <br><br><br>
         <h1>Esercizio 2</h1> 
