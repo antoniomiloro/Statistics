@@ -11,7 +11,7 @@
     </head>
     <body>
         <h1>Esercizio 1</h1> 
-        <h3>1. Choose 3 variables from our surveys: <br>
+        <h4>1. Choose 3 variables from our surveys: <br>
             - one Qualitative <br>
             - one Quantitative discrete <br>
             - one Quantitative continuous (use class intervals in this case, obviously) <br>
@@ -19,7 +19,7 @@
             create the most efficient algorithms to compute the frequency (absolute/relative/percentage) distribution of: <br>
             
             - the 3 variables <br>
-            - the joint distribution of 2 variables</h3>
+            - the joint distribution of 2 variables</h4> <br>
         <h4>C# program</h4>
         <pre>
             <code>
@@ -142,8 +142,111 @@
             </code>
         </pre>
 
+        <h4>Output:</h4>
+        <pre>
+            <code>
+                ---Height Frequencies---
+
+                : 40 (Relative: 0,70, Percentage: 70,18%)
+                1.73: 2 (Relative: 0,04, Percentage: 3,51%)
+                1.76: 2 (Relative: 0,04, Percentage: 3,51%)
+                1.8: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.72: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.68: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.81: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.86: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.71: 1 (Relative: 0,02, Percentage: 1,75%)
+                180: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.65: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.9: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.7: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.78: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.91: 1 (Relative: 0,02, Percentage: 1,75%)
+                1.82: 1 (Relative: 0,02, Percentage: 1,75%)
+
+                ---Background Degree Frequencies---
+
+                engineering in computer science: 2 (Relative: 0,04, Percentage: 3,77%)
+                computer and system engineering: 1 (Relative: 0,02, Percentage: 1,89%)
+                computer science: 29 (Relative: 0,55, Percentage: 54,72%)
+                computer science and engineering: 1 (Relative: 0,02, Percentage: 1,89%)
+                computer engineering: 11 (Relative: 0,21, Percentage: 20,75%)
+                software and information engineering: 1 (Relative: 0,02, Percentage: 1,89%)
+                information engineering, computer science and statistics: 1 (Relative: 0,02, Percentage: 1,89%)
+                computer sciwence: 1 (Relative: 0,02, Percentage: 1,89%)
+                international relations: 1 (Relative: 0,02, Percentage: 1,89%)
+                cybersecurity: 3 (Relative: 0,06, Percentage: 5,66%)
+                security of information technologies: 1 (Relative: 0,02, Percentage: 1,89%)
+                conputer engineering: 1 (Relative: 0,02, Percentage: 1,89%)
+
+                ---Ambitious Values Frequencies---
+
+                4: 19 (Relative: 0,36, Percentage: 35,85%)
+                5: 28 (Relative: 0,53, Percentage: 52,83%)
+                6: 1 (Relative: 0,02, Percentage: 1,89%)
+                3: 5 (Relative: 0,09, Percentage: 9,43%)
+
+                ---Joint Distribution of Ambitiousness and Height (Data: A | H)---
+
+                Data: 4,         Frequency: 13, Relative Frequency: 0,25, Percentage: 24,53%
+                Data: 5,         Frequency: 22, Relative Frequency: 0,42, Percentage: 41,51%
+                Data: 5, 1.73    Frequency: 2, Relative Frequency: 0,04, Percentage: 3,77%
+                Data: 5, 1.76    Frequency: 2, Relative Frequency: 0,04, Percentage: 3,77%
+                Data: 4, 1.8     Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 5, 1.72    Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 4, 1.68    Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 4, 1.81    Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 6,         Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 5, 1.86    Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 4, 1.71    Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 3,         Frequency: 4, Relative Frequency: 0,08, Percentage: 7,55%
+                Data: 4, 180     Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 3, 1.65    Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: 4, 1.9     Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+
+                ---Joint Distribution OF 3 VARIABLES---
+
+                Data: engineering in computer science, 4,        Frequency: 2, Relative Frequency: 0,04, Percentage: 3,77%
+                Data: computer and system engineering, 5,        Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science, 5, 1.73          Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science and engineering, 5,       Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer engineering, 5, 1.76      Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: software and information engineering, 5, 1.76      Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer engineering, 5,           Frequency: 3, Relative Frequency: 0,06, Percentage: 5,66%
+                Data: computer engineering, 5, 1.73      Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science, 4, 1.8   Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science, 4,       Frequency: 5, Relative Frequency: 0,09, Percentage: 9,43%
+                Data: computer science, 5, 1.72          Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science, 5,       Frequency: 16, Relative Frequency: 0,30, Percentage: 30,19%
+                Data: computer engineering, 4, 1.68      Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science, 4, 1.81          Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer engineering, 6,           Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer engineering, 5, 1.86      Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer engineering, 4, 1.71      Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science, 3,       Frequency: 3, Relative Frequency: 0,06, Percentage: 5,66%
+                Data: information engineering, computer science and statistics, 4,       Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer sciwence, 4, 180          Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer science, 3, 1.65          Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: international relations, 4,        Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: cybersecurity, 4,          Frequency: 2, Relative Frequency: 0,04, Percentage: 3,77%
+                Data: security of information technologies, 5,           Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer engineering, 4, 1.9       Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: computer engineering, 4,           Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: conputer engineering, 4,           Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+                Data: cybersecurity, 3,          Frequency: 1, Relative Frequency: 0,02, Percentage: 1,89%
+
+            </code>
+        </pre>
+        
         <br><br><br>
         <h1>Esercizio 2</h1> 
+        <h3>2. For the following most important data structures (or others that you may want to suggest) recall how to: <br>
+            
+            -loop (break/continue) <br>
+            -add/remove/get/set/check the existence of key/value <br>
+            
+            data structures: <br>
+            array, list, dictionary, sorted list, hashset, sortedset, queue, stack, linkedlist</h3>
         <h5>To view the code of Cheatsheet, visit the page: <a href="./cheatsheet.html">Cheatsheet</a></h5>
         
         <br><br><br>
