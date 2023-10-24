@@ -16,8 +16,19 @@
             and 1 if the system was successfully "shielded" or protected. <br> Simulate the score "trajectories" for all systems,
             assuming, for simplicity, a constant penetration probability p at each attack.</h5>
         <p>Clicca sul pulsante per eseguire la simulazione:</p>
-        <button id="simulateButton">Simula</button>
-        
+        <form id="inputForm">
+            <label for="numSystems">Numero di Sistemi:</label>
+            <input type="number" id="numSystems" min="1" value="10"><br>
+    
+            <label for="numAttacks">Numero di Attacchi:</label>
+            <input type="number" id="numAttacks" min="1" value="20"><br>
+    
+            <label for="penetrationProbability">Probabilità di Penetrazione (0-1):</label>
+            <input type="number" id="penetrationProbability" step="0.01" min="0" max="1" value="0.2"><br>
+            
+            <button id="simulateButton">Simula</button>
+        </form>
+
         <div id="chartContainer" style="width: 800px; height: 400px;">
             <canvas id="securityChart"></canvas>
         </div>
@@ -25,47 +36,63 @@
         <script>
             // Definisci la funzione per simulare i punteggi di sicurezza
             function simulateSecurityScoreTrajectories(M, N, p, T) {
-                // ... (Inserisci qui il codice JavaScript dalla risposta precedente)
+                    const scoreTrajectories = [];
+
+                    for (let trial = 0; trial < T; trial++) {
+                        const trialScores = [];
+
+                        for (let system = 0; system < M; system++) {
+                            let systemScore = 1;
+                            const systemTrajectory = [];
+
+                            for (let attack = 0; attack < N; attack++) {
+                                if (Math.random() <= p) {
+                                    systemScore = -1;
+                                }
+
+                                systemTrajectory.push(systemScore);
+                            }
+
+                            trialScores.push(systemTrajectory);
+                        }
+
+                        scoreTrajectories.push(trialScores);
+                    }
+
+                    return scoreTrajectories;
             }
     
-            // Aggiungi un gestore di eventi al pulsante "Simula"
             const simulateButton = document.getElementById('simulateButton');
-            simulateButton.addEventListener('click', function () {
-                const M = 10; // Numero di sistemi
-                const N = 20; // Numero di attacchi
-                const p = 0.2; // Probabilità di penetrazione
+                simulateButton.addEventListener('click', function () {
+                const numSystems = parseInt(document.getElementById('numSystems').value, 10);
+                const numAttacks = parseInt(document.getElementById('numAttacks').value, 10);
+                const penetrationProbability = parseFloat(document.getElementById('penetrationProbability').value);
                 const T = 1000; // Numero di simulazioni
-    
-                const scoreTrajectories = simulateSecurityScoreTrajectories(M, N, p, T);
+
+                // Esegui la simulazione
+                const scoreTrajectories = simulateSecurityScoreTrajectories(numSystems, numAttacks, penetrationProbability, T);
 
                 // Prepara i dati per il grafico
-                const labels = Array.from({ length: N }, (_, i) => `Attacco ${i + 1}`);
-                const colors = [
-                    'rgba(255, 99, 132, 1)', // Rosso
-                    'rgba(54, 162, 235, 1)', // Blu
-                    'rgba(255, 206, 86, 1)', // Giallo
-                    'rgba(75, 192, 192, 1)', // Verde
-                    'rgba(153, 102, 255, 1)', // Viola
-                    'rgba(255, 159, 64, 1)', // Arancione
-                ];
+                const labels = Array.from({ length: numAttacks }, (_, i) => `Attacco ${i + 1}`);
 
                 const datasets = scoreTrajectories.map((systemTrajectories, systemIndex) => {
                     return {
                         label: `Sistema ${systemIndex + 1}`,
                         data: systemTrajectories[0].map((_, i) => systemTrajectories.reduce((acc, trial) => acc + trial[i], 0)),
-                        borderColor: colors[systemIndex % colors.length], // Imposta il colore per il dataset
                         fill: false,
                     };
                 });
 
-                // Crea e visualizza il grafico
-                const ctx = document.getElementById('securityChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: datasets,
-                    },
+                // Crea e visualizza il grafico solo dopo che il documento è stato caricato
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ctx = document.getElementById('securityChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: datasets,
+                        },
+                    });
                 });
             });
         </script>
