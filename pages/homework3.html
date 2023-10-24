@@ -36,19 +36,28 @@
                 const p = 0.2; // Probabilità di penetrazione
                 const T = 1000; // Numero di simulazioni
     
-                // Esegui la simulazione
                 const scoreTrajectories = simulateSecurityScoreTrajectories(M, N, p, T);
-    
+
                 // Prepara i dati per il grafico
                 const labels = Array.from({ length: N }, (_, i) => `Attacco ${i + 1}`);
+                const colors = [
+                    'rgba(255, 99, 132, 1)', // Rosso
+                    'rgba(54, 162, 235, 1)', // Blu
+                    'rgba(255, 206, 86, 1)', // Giallo
+                    'rgba(75, 192, 192, 1)', // Verde
+                    'rgba(153, 102, 255, 1)', // Viola
+                    'rgba(255, 159, 64, 1)', // Arancione
+                ];
+
                 const datasets = scoreTrajectories.map((systemTrajectories, systemIndex) => {
                     return {
                         label: `Sistema ${systemIndex + 1}`,
                         data: systemTrajectories[0].map((_, i) => systemTrajectories.reduce((acc, trial) => acc + trial[i], 0)),
+                        borderColor: colors[systemIndex % colors.length], // Imposta il colore per il dataset
                         fill: false,
                     };
                 });
-    
+
                 // Crea e visualizza il grafico
                 const ctx = document.getElementById('securityChart').getContext('2d');
                 new Chart(ctx, {
