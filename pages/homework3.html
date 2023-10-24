@@ -43,7 +43,7 @@
                 const datasets = scoreTrajectories.map((systemTrajectories, systemIndex) => {
                     return {
                         label: `Sistema ${systemIndex + 1}`,
-                        data: systemTrajectories.map(trialScores => trialScores.reduce((a, b) => a + b, 0)),
+                        data: systemTrajectories[0].map((_, i) => systemTrajectories.reduce((acc, trial) => acc + trial[i], 0)),
                         fill: false,
                     };
                 });
