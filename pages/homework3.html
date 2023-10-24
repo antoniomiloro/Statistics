@@ -6,6 +6,7 @@
         <meta http-equiv='expires' content='0'> 
         <meta http-equiv='pragma' content='no-cache'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
         <h1>Esercizio 1</h1>
@@ -13,12 +14,19 @@
             simulate the accumulation of a "security score" (-1, 1), where the score is -1 if the system is penetrated <br>
             and 1 if the system was successfully "shielded" or protected. <br> Simulate the score "trajectories" for all systems,
             assuming, for simplicity, a constant penetration probability p at each attack.</h5>
+        <p>Clicca sul pulsante per eseguire la simulazione:</p>
+        <button id="simulateButton">Simula</button>
+        
+        <div id="chartContainer" style="width: 800px; height: 400px;">
+            <canvas id="securityChart"></canvas>
+        </div>
+        
         <script>
             // Definisci la funzione per simulare i punteggi di sicurezza
             function simulateSecurityScoreTrajectories(M, N, p, T) {
                 // ... (Inserisci qui il codice JavaScript dalla risposta precedente)
             }
-
+    
             // Aggiungi un gestore di eventi al pulsante "Simula"
             const simulateButton = document.getElementById('simulateButton');
             simulateButton.addEventListener('click', function () {
@@ -26,13 +34,29 @@
                 const N = 20; // Numero di attacchi
                 const p = 0.2; // Probabilità di penetrazione
                 const T = 1000; // Numero di simulazioni
-
+    
                 // Esegui la simulazione
                 const scoreTrajectories = simulateSecurityScoreTrajectories(M, N, p, T);
-
-                // Visualizza i risultati
-                const resultElement = document.getElementById('result');
-                resultElement.textContent = JSON.stringify(scoreTrajectories, null, 2);
+    
+                // Prepara i dati per il grafico
+                const labels = Array.from({ length: N }, (_, i) => `Attacco ${i + 1}`);
+                const datasets = scoreTrajectories.map((systemTrajectories, systemIndex) => {
+                    return {
+                        label: `Sistema ${systemIndex + 1}`,
+                        data: systemTrajectories.map(trialScores => trialScores.reduce((a, b) => a + b, 0)),
+                        fill: false,
+                    };
+                });
+    
+                // Crea e visualizza il grafico
+                const ctx = document.getElementById('securityChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: datasets,
+                    },
+                });
             });
         </script>
     </body>
