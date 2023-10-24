@@ -16,6 +16,16 @@
             and 1 if the system was successfully "shielded" or protected. <br> Simulate the score "trajectories" for all systems,
             assuming, for simplicity, a constant penetration probability p at each attack.</h5>
         
+        <br><br>
+        <h4>Part b</h4>
+        <h5>Same as before, but simulate the cumulated frequency, say f, of penetration. <br> Do the same with the relative
+            frequency f/number of attacks and the "normalized" ratio: f/ √number of attacks. <br>
+            For any of the above 4 charts (which will be actually an instance of a unique "object", from a coder's point of view), plot <br>
+            a vertical histogram at some point x (day or attack number, user parameter) and at the last abscissa <br>
+            value and make your personal considerations on the shape of the distributions. <br>
+            Make sure that each animation is enclosed into a "frame" (a rectangle) resizable by the user, by using the mouse <br>
+            (you can make a separate, reusable, "ResizableRectangle" object for that).</h5>
+        
         <form id="inputForm">
             <label for="M">Numero di Sistemi (M):</label>
             <input type="number" id="M" min="1" value="10"><br>
@@ -31,6 +41,8 @@
         
             <button type="button" id="updateButton">Aggiorna Grafico</button>
         </form>
+
+        <br><br>
 
         <div class="canvas-container">
             <canvas id="securityChartOriginal"></canvas>
@@ -314,14 +326,5 @@
                         };
         </script>
 
-        <br><br>
-        <h4>Part b</h4>
-        <h5>Same as before, but simulate the cumulated frequency, say f, of penetration. <br> Do the same with the relative
-            frequency f/number of attacks and the "normalized" ratio: f/ √number of attacks. <br>
-            For any of the above 4 charts (which will be actually an instance of a unique "object", from a coder's point of view), plot <br>
-            a vertical histogram at some point x (day or attack number, user parameter) and at the last abscissa <br>
-            value and make your personal considerations on the shape of the distributions. <br>
-            Make sure that each animation is enclosed into a "frame" (a rectangle) resizable by the user, by using the mouse <br>
-            (you can make a separate, reusable, "ResizableRectangle" object for that).</h5>
     </body>
 </html>
