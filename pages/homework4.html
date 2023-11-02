@@ -18,18 +18,19 @@
         
         <div class="centered">
             <p>
-                <label for="M"> <b>Number of continuous variables:</b></label>
-                <input type="number" id="M" value="5" min="1">
+                <label for="numberVariables"> <b>Number of continuous variables:</b></label>
+                <input type="number" id="M" max="10" min="1" step="1">
             </p>
                 <p>
-                <label for="N"><b>Number of values of each variable:</b></label>
-                <input type="number" id="N" value="10" min="1"> 
+                <label for="numberElements"><b>Number of values of each variable:</b></label>
+                <input type="number" id="N" max="100" min="1" step="1"> 
             </p>
             <br>
 
-            <button onclick="updateAllCharts()">Send data</button>
+            <button type="button" onclick="generateRandomData()"> Send data </button>
 
         </div>
+        <br>
 
         <h4>JOIN DISTRIBUTION</h4>
         <table class="table table-bordered table-striped center-table" id="tableJOIN" style="max-width: 60vw; text-align: right;">
