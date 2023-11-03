@@ -320,4 +320,41 @@
             </code>
         </pre>
 
-        
+        <hr>
+
+        <h5>Search on the web about the Law of large numbers LLN and compare it with Part b of your homework 3 and express in your own words <br>
+            whether your simulation is somehow related with this theorem, and why.<br>
+            Search on the web about the Central Limit Theorem CLT and compare it with Part a of your homework 3 and say in your own words <br>
+            whether your simulation is somehow related with this theorem, and why. <br>
+            Based on the CLT, how could you modify ("normalize") the "security score" to obtain an asymptotic convergence to a proper distribution? <br><br>
+        </h5>
+
+        <p>The Law of Large Numbers (LLN) is a theorem that describes the result of performing the same experiment a large number of times. <br>
+           According to the law, the average of the results obtained from a large number of trials should be close to the expected value and <br>
+           tends to become closer to the expected value as more trials are performed ⁵. <br>
+           In your case, you are simulating dice rolls and trying to illustrate the LLN through simulations in R. <br>
+           More precisely, you would like to illustrate that the cumulative distribution function of the mean converges to the function f given by f(x) = 0 if x ≤ μ and f(x) = 1 if x > μ ⁴. <br><br>
+
+           The Central Limit Theorem (CLT) states that for sufficiently large random samples, the sample means will be approximately normally distributed. <br>
+           The remarkable thing is that the original data from which you are sampling does not need to be normally distributed. <br>
+           It can be as "abnormal" as you like, so long as the sample size is sufficiently large ⁹. <br>
+           In your case, you are simulating dice rolls and finding the mean of each sample. <br>
+           The sample means get distributed in the long run, and although the original data (the dice rolls) have a flat "uniform" distribution, <br>
+           the sample means have a bell-shaped "normal" distribution ⁹. Therefore, your simulation is related to the CLT. <br><br>
+            
+           Based on the CLT, you could modify ("normalize") the "security score" by subtracting the mean and dividing by the standard deviation. <br>
+           This process is called standardization or normalization. The resulting distribution will have a mean of zero and a standard deviation of one, <br>
+           which is a standard normal distribution. This transformation is useful because it allows you to compare scores from different populations with different means and standard deviations ². <br><br>
+            
+            (1) Law of Large Numbers - Data Science Discovery. https://discovery.cs.illinois.edu/learn/Simulation-and-Distributions/Law-of-Large-Numbers/.
+            (2) r - Illustrating the LLN (Law of Large Numbers) - Stack Overflow. https://stackoverflow.com/questions/44292733/illustrating-the-lln-law-of-large-numbers.
+            (3) The Central Limit Theorem - Introduction with Simulations and Examples. https://www.seedata.live/clt-simulation/.
+            (4) Improving the Accuracy of Network Intrusion Detection with ... - Hindawi. https://www.hindawi.com/journals/scn/2021/8986243/.
+            (5) Two Proofs of the Central Limit Theorem - Department of Computer .... https://www.cs.toronto.edu/~yuvalf/CLT.pdf.
+            (6) Central Limit Theorem - Course. https://www.probabilitycourse.com/chapter7/7_1_2_central_limit_theorem.php.
+            (7) SOCR EduMaterials Activities LawOfLargeNumbers - Socr. http://wiki.stat.ucla.edu/socr/index.php/SOCR_EduMaterials_Activities_LawOfLargeNumbers.
+            (8) Simple simulation of the Law of Large Numbers - LLN in R?. https://stackoverflow.com/questions/33373872/simple-simulation-of-the-law-of-large-numbers-lln-in-r.
+            (9) GitHub - josh0xA/LLN: Law of Large Numbers Simulator. https://github.com/josh0xA/LLN.
+            (10) Law of Large Numbers vs Central Limit Theorem - Medium. https://medium.com/analytics-vidhya/law-of-large-numbers-vs-central-limit-theorem-7819f32c67b2.
+            (11) Understanding the Central Limit Theorem the Easy Way: A Simulation .... https://www.mdpi.com/2504-3900/2/21/1322.
+            (12) Simulating the central limit theorem - SAGE Journals. https://journals.sagepub.com/doi/pdf/10.1177/1536867X1801800203.</p>
