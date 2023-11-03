@@ -115,6 +115,93 @@
             }
         </script> 
 
+        <h4>JavaScript program</h4>
+        <pre>
+            <code>
+                const selectedNames = new Set();
+                let data = [];
+            
+                function handleFileSelect(event) {
+                    const file = event.target.files[0];
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        data = [];
+            
+                        const dataFromXLSX = XLSX.read(event.target.result, { type: 'binary' });
+                        const sheetName = dataFromXLSX.SheetNames[0];
+                        const worksheet = dataFromXLSX.Sheets[sheetName];
+                        data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+                        createButtons();
+                    };
+                    reader.readAsBinaryString(file);
+                }
+            
+                function createButtons() {
+                    const header = data[0];
+            
+                    const buttons = header.map(cell => {
+                        const button = document.createElement('button');
+                        button.textContent = cell;
+                        button.addEventListener('click', () => toggleText(cell));
+                        return button;
+                    });
+            
+                    const buttonsContainer = document.getElementById('buttons');
+                    buttons.forEach(button => buttonsContainer.appendChild(button));
+                }
+            
+                function toggleText(text) {
+                    const outputElement = document.getElementById('output');
+                    if (selectedNames.has(text)) {
+                        selectedNames.delete(text);
+                    } else {
+                        selectedNames.add(text);
+                    }
+            
+                    const selectedNamesArray = Array.from(selectedNames);
+                    outputElement.textContent = selectedNamesArray.join(', ');
+                }
+            
+                function handleSubmit(event) {
+                    event.preventDefault(); // Prevent form submission
+                    computeFrequencyDistribution();
+                }
+            
+                document.getElementById('xlsxFile').addEventListener('change', handleFileSelect, false);
+            
+                function computeFrequencyDistribution() {
+                    const frequencyTable = document.getElementById('frequencyTable');
+                    frequencyTable.innerHTML = ''; // Clear the previous table
+            
+                    if (selectedNames.size > 0) {
+                        const header = data[0];
+                        const selectedColumnIndices = header
+                            .map((columnName, index) => selectedNames.has(columnName) ? index : -1)
+                            .filter(index => index !== -1);
+            
+                        const jointFrequency = new Map();
+            
+                        for (const row of data.slice(1)) {
+                            const selectedRowValues = selectedColumnIndices.map(index => row[index]);
+                            const key = selectedRowValues.join('|');
+                            jointFrequency.set(key, (jointFrequency.get(key) || 0) + 1);
+                        }
+            
+                        const table = document.createElement('table');
+                        table.innerHTML = `<tr><th>Variables</th><th>Absolute Frequency</th><th>Relative Frequency</th><th>Percentage Frequency</th></tr>`;
+            
+                        for (const [key, count] of jointFrequency) {
+                            const relative = count / (data.length - 1);
+                            const percentage = (relative * 100).toFixed(2);
+                            table.innerHTML += `<tr><td>${key}</td><td>${count}</td><td>${relative.toFixed(2)}</td><td>${percentage}%</td></tr>`;
+                        }
+            
+                        frequencyTable.appendChild(table);
+                    }
+                }
+            </code>
+        </pre>
+
         <h4>C# program</h4>
         <pre>
             <code>
@@ -122,117 +209,113 @@
                 using System.Collections.Generic;
                 using System.IO;
                 using System.Linq;
+                using OfficeOpenXml;
 
-                class Program
+                public class FrequencyDistributionCalculator
                 {
-                    static void Main()
+                    private readonly HashSet<string> selectedNames = new HashSet<string>();
+                    private List<string[]> data = new List<string[]>();
+
+                    public void HandleFileSelect(string filePath)
                     {
-                        string projectDirectory = "YOUR PROJECT DIRECTORY";
-                        
-                        string degreesPath = Path.Combine(projectDirectory, "degrees.txt");
-                        string ambitiousnessPath = Path.Combine(projectDirectory, "ambitiousness.txt");
-                        string heightsPath = Path.Combine(projectDirectory, "heights.txt");
+                        data.Clear();
 
-                        string degreesData = File.ReadAllText(degreesPath);
-                        string ambitiousnessData = File.ReadAllText(ambitiousnessPath);
-                        string heightsData = File.ReadAllText(heightsPath);
-
-                        Dictionary heightsFrequencies = CalculateFrequencies(heightsData);
-                        PrintFrequencies(heightsFrequencies, "---Height Frequencies---");
-
-                        Dictionary degreesFrequencies = CalculateFrequencies(degreesData);
-                        PrintFrequencies(degreesFrequencies, "---Background Degree Frequencies---");
-
-                        Dictionary ambitiousnessFrequencies = CalculateFrequencies(ambitiousnessData);
-                        PrintFrequencies(ambitiousnessFrequencies, "---Ambitious Values Frequencies---");
-
-                        List dataArrays = new List
+                        using (var package = new ExcelPackage(new FileInfo(filePath)))
                         {
-                            ambitiousnessData.Split('\n'),
-                            heightsData.Split('\n')
-                        };
+                            var worksheet = package.Workbook.Worksheets[0];
+                            int rowCount = worksheet.Dimension.Rows;
 
-                        Dictionary jointDistribution = CalculateJointDistribution(dataArrays);
-                        PrintJointDistribution(jointDistribution, "---Joint Distribution of Ambitiousness and Height (Data: A | H)---");
-
-                        dataArrays.Add(degreesData.Split('\n'));
-
-                        Dictionary jointDistributions = CalculateJointDistribution(dataArrays);
-                        PrintJointDistribution(jointDistributions, "---Joint Distribution OF 3 VARIABLES---");
-                    }
-
-                    static Dictionary CalculateFrequencies(string text)
-                    {
-                        var frequencies = new Dictionary();
-                        var lines = text.Split('\n');
-
-                        foreach (var line in lines)
-                        {
-                            var item = line.ToLower().Trim();
-
-                            if (frequencies.ContainsKey(item))
+                            for (int row = 1; row <= rowCount; row++)
                             {
-                                frequencies[item]++;
+                                var rowData = worksheet.Cells[row, 1, row, worksheet.Dimension.Columns]
+                                    .Select(cell => cell.Text)
+                                    .ToArray();
+
+                                data.Add(rowData);
                             }
-                            else
-                            {
-                                frequencies[item] = 1;
-                            }
-                        }
 
-                        return frequencies;
-                    }
-
-                    static void PrintFrequencies(Dictionary frequencies, string title)
-                    {
-                        Console.WriteLine($"\n{title}\n");
-                        int total = frequencies.Values.Sum();
-
-                        foreach (var item in frequencies)
-                        {
-                            double relativeFrequency = (double)item.Value / total;
-                            double percentage = relativeFrequency * 100;
-                            Console.WriteLine($"{item.Key}: {item.Value} (Relative: {relativeFrequency:F2}, Percentage: {percentage:F2}%)");
+                            CreateButtons(data[0]);
                         }
                     }
 
-                    static Dictionary CalculateJointDistribution(List dataArrays)
+                    public void CreateButtons(string[] header)
                     {
-                        var jointDistribution = new Dictionary();
-                        int numVariables = dataArrays.Count;
-
-                        for (int i = 0; i < dataArrays[0].Length; i++)
+                        var buttons = header.Select(cell =>
                         {
-                            var values = dataArrays.Select(dataArray => dataArray[i].ToLower().Trim()).ToList();
-                            var key = string.Join("|", values);
+                            var button = new ButtonElement(cell);
+                            button.Clicked += () => ToggleText(cell);
+                            return button;
+                        }).ToList();
 
-                            if (jointDistribution.ContainsKey(key))
-                            {
-                                jointDistribution[key]++;
-                            }
-                            else
-                            {
-                                jointDistribution[key] = 1;
-                            }
-                        }
-
-                        return jointDistribution;
+                        // Add buttons to the UI
                     }
 
-                    static void PrintJointDistribution(Dictionary jointDistribution, string title)
+                    public void ToggleText(string text)
                     {
-                        Console.WriteLine($"\n{title}\n");
-                        int total = jointDistribution.Values.Sum();
-
-                        foreach (var item in jointDistribution)
+                        if (selectedNames.Contains(text))
                         {
-                            var values = item.Key.Split('|');
-                            double relativeFrequency = (double)item.Value / total;
-                            double percentage = relativeFrequency * 100;
-                            Console.WriteLine($"Data: {string.Join(", ", values)} \t Frequency: {item.Value}, Relative Frequency: {relativeFrequency:F2}, Percentage: {percentage:F2}%");
+                            selectedNames.Remove(text);
+                        }
+                        else
+                        {
+                            selectedNames.Add(text);
+                        }
+
+                        var selectedNamesArray = selectedNames.ToArray();
+                        // Update the output element in the UI
+                    }
+
+                    public void ComputeFrequencyDistribution()
+                    {
+                        if (selectedNames.Count > 0)
+                        {
+                            var header = data[0];
+                            var selectedColumnIndices = header
+                                .Select((columnName, index) => selectedNames.Contains(columnName) ? index : -1)
+                                .Where(index => index != -1)
+                                .ToList();
+
+                            var jointFrequency = new Dictionary<string, int>();
+
+                            foreach (var row in data.Skip(1))
+                            {
+                                var selectedRowValues = selectedColumnIndices.Select(index => row[index]).ToArray();
+                                var key = string.Join("|", selectedRowValues);
+                                if (jointFrequency.ContainsKey(key))
+                                {
+                                    jointFrequency[key]++;
+                                }
+                                else
+                                {
+                                    jointFrequency[key] = 1;
+                                }
+                            }
+
+                            // Create and display the frequency table in the UI
                         }
                     }
                 }
+
+                public class ButtonElement
+                {
+                    public string Text { get; }
+                    public event Action Clicked;
+
+                    public ButtonElement(string text)
+                    {
+                        Text = text;
+                    }
+
+                    public void Click()
+                    {
+                        Clicked?.Invoke();
+                    }
+                }
+
+                // Esempio di utilizzo
+                var calculator = new FrequencyDistributionCalculator();
+                calculator.HandleFileSelect("path_to_excel_file.xlsx");
+                calculator.ComputeFrequencyDistribution();
 
             </code>
         </pre>
