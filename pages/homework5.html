@@ -8,15 +8,76 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>
-            #servers {
-                display: flex;
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 0;
             }
-            .server {
-                width: 10px;
-                height: 300px;
-                background-color: #3439db; /* Colore delle linee degli attacchi */
-                margin: 0 1px;
-                opacity: 0.5; /* Opacità per una visualizzazione più chiara */
+    
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+    
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+    
+            input, button {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+    
+            button {
+                background-color: #007BFF;
+                color: #fff;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #0056b3;
+            }
+    
+            canvas {
+                width: 100%;
+                height: 400px;
+                display: block;
+                margin: 20px 0;
+                border: 2px solid #000;
+                border-radius: 10px;
+            }
+    
+            .axis-labels {
+                display: flex;
+                justify-content: space-between;
+            }
+    
+            .axis-labels-x {
+                display: flex;
+                justify-content: center; /* Per centrare "Server" */
+                align-items: flex-end; /* Per spostarlo in basso */
+            }
+    
+            .axis-labels-y {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 10px;
+            }
+    
+            .statistics-label {
+                text-align: center;
+                font-size: 24px;
+                margin: 20px 0;
             }
         </style>
     </head>
@@ -28,28 +89,30 @@
             Simulate the attacks to the M servers and represent each of them with a line which
             makes jumps of 1 at each attack event.</h5>
         
-        <div class="centered">
-            <p>
-                <label for="M"> <b>Number of systems (M):</b></label>
-                <input type="number" id="M" value="5" min="1">
-            </p>
-            <p>
-                <label for="N"><b>Number of attacks (N):</b></label>
-                <input type="number" id="N" value="10" min="1"> 
-            </p>
-            <p>
-                <label for="T"><b>Time period (T):</b></label>
-                <input type="number" id="T" value="1" min="1" max="365"> 
-            </p>
-            <p>
-                <label for="lambda">Probability of attack (lambda):</label>
-                <input type="number" id="lambda" min="0" step="0.01" value="0.1">
-            </p>
-        </div>
+        <div class="container">
+            <label for="numServers">Number of server (M):</label>
+            <input type="number" id="numServers" min="1" value="10">
 
-        <button onclick="startSimulation()">Start Simulation</button>
-        <br> <br>
-        <div id="servers"></div>
+            <label for="numIntervals">Number of subintervals (N):</label>
+            <input type="number" id="numIntervals" min="1" value="10">
+
+            <label for="period">Time period (T in giorni):</label>
+            <input type="number" id="period" min="1" value="365">
+
+            <label for="lambda">Probability of attacks (lambda):</label>
+            <input type="number" id="lambda" min="0" step="0.01" value="0.1">
+
+            <button id="generateChart">Start simulation</button>
+        </div>
+    
+        <div class="axis-labels">
+            <canvas id="attackChart"></canvas>
+            <div class="axis-labels-x">
+                <div>Server</div>
+            </div>
+        </div>
+    
+        <div id="probabilityMessage"></div>
 
         <script>
             document.getElementById('generateChart').addEventListener('click', () => {
