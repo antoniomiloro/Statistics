@@ -14,8 +14,9 @@
             .server {
                 width: 2px;
                 height: 100px;
-                background-color: red;
+                background-color: #3498db; /* Colore delle linee degli attacchi */
                 margin: 0 1px;
+                opacity: 0.5; /* Opacità per una visualizzazione più chiara */
             }
         </style>
     </head>
@@ -43,7 +44,7 @@
         </div>
 
         <button onclick="startSimulation()">Start Simulation</button>
-
+        <br> <br>
         <div id="servers"></div>
 
         <script>
