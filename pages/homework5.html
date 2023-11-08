@@ -527,7 +527,171 @@
             </code>  
         </pre>
 
-        <h3>Theoretical part</h3>
+        <h3>C# Code</h3>
+
+        <pre>
+            <code>
+                using System;
+                using System.Drawing;
+                using System.Windows.Forms;
+                using System.Linq;
+
+                class PoissonPointProcessSimulation : Form
+                {
+                    private const int Width = 800;
+                    private const int Height = 400;
+                    private const int BarWidth = 20;
+                    private int numServers = 50;
+                    private int numIntervals = 100;
+                    private int period = 1;
+                    private double lambda = 0.1;
+
+                    public PoissonPointProcessSimulation()
+                    {
+                        DoubleBuffered = true;
+                        Size = new Size(Width, Height);
+                        GenerateChart();
+                        GenerateHistogram();
+                        Paint += (sender, e) =>
+                        {
+                            GenerateChart();
+                            GenerateHistogram();
+                        };
+                        TextBox numServersTextBox = new TextBox() { Left = 100, Top = Height + 20 };
+                        TextBox numIntervalsTextBox = new TextBox() { Left = 250, Top = Height + 20 };
+                        TextBox periodTextBox = new TextBox() { Left = 400, Top = Height + 20 };
+                        TextBox lambdaTextBox = new TextBox() { Left = 550, Top = Height + 20 };
+                        Button generateButton = new Button() { Text = "Generate", Left = 700, Top = Height + 20 };
+                        numServersTextBox.TextChanged += (sender, e) => int.TryParse(numServersTextBox.Text, out numServers);
+                        numIntervalsTextBox.TextChanged += (sender, e) => int.TryParse(numIntervalsTextBox.Text, out numIntervals);
+                        periodTextBox.TextChanged += (sender, e) => int.TryParse(periodTextBox.Text, out period);
+                        lambdaTextBox.TextChanged += (sender, e) => double.TryParse(lambdaTextBox.Text, out lambda);
+                        generateButton.Click += (sender, e) =>
+                        {
+                            GenerateChart();
+                            GenerateHistogram();
+                            Invalidate();
+                        };
+                        Controls.Add(numServersTextBox);
+                        Controls.Add(numIntervalsTextBox);
+                        Controls.Add(periodTextBox);
+                        Controls.Add(lambdaTextBox);
+                        Controls.Add(generateButton);
+                    }
+
+                    protected override void OnPaint(PaintEventArgs e)
+                    {
+                        base.OnPaint(e);
+                        GenerateChart();
+                        GenerateHistogram();
+                    }
+
+                    private void GenerateChart()
+                    {
+                        using (var bmp = new Bitmap(Width, Height))
+                        using (var g = Graphics.FromImage(bmp))
+                        {
+                            g.Clear(Color.White);
+                            var data = MakeTrajectories(numServers, numIntervals, lambda);
+                            var colors = GenerateRandomColors(numServers);
+                            var offset = 0;
+                            for (var i = 0; i < numServers; i++)
+                            {
+                                var serverAttacks = data[i];
+                                var prevX = 0;
+                                var prevY = Height;
+                                for (var j = 0; j < numIntervals; j++)
+                                {
+                                    var x = j * Width / (numIntervals - 1);
+                                    var y = Height - (int)((double)serverAttacks[j] / numIntervals * Height) + offset;
+                                    g.DrawLine(new Pen(colors[i], 2), prevX, prevY, x, y);
+                                    g.FillEllipse(new SolidBrush(colors[i]), x - 2, y - 2, 4, 4);
+                                    prevX = x;
+                                    prevY = y;
+                                }
+                                offset += 20;
+                            }
+                            using (var formGraphics = CreateGraphics())
+                            {
+                                formGraphics.DrawImage(bmp, 0, 0);
+                            }
+                        }
+                    }
+
+                    private void GenerateHistogram()
+                    {
+                        using (var bmp = new Bitmap(Width, Height))
+                        using (var g = Graphics.FromImage(bmp))
+                        {
+                            g.Clear(Color.White);
+                            var data = MakeTrajectories(numServers, numIntervals, lambda);
+                            var colors = GenerateRandomColors(numIntervals);
+                            var attackFrequencies = new int[numIntervals];
+                            for (var i = 0; i < numServers; i++)
+                            {
+                                var serverAttacks = data[i];
+                                for (var j = 0; j < numIntervals; j++)
+                                {
+                                    attackFrequencies[j] += serverAttacks[j];
+                                }
+                            }
+                            var maxFrequency = attackFrequencies.Max();
+                            for (var i = 0; i < numIntervals; i++)
+                            {
+                                var barHeight = (double)attackFrequencies[i] / maxFrequency * (Height - 20);
+                                var x = i * BarWidth;
+                                var y = Height - (int)barHeight;
+                                g.FillRectangle(new SolidBrush(colors[i]), x, y, BarWidth, (int)barHeight);
+                            }
+                            using (var formGraphics = CreateGraphics())
+                            {
+                                formGraphics.DrawImage(bmp, 0, 0);
+                            }
+                        }
+                    }
+
+                    private int[][] MakeTrajectories(int M, int N, double lambda)
+                    {
+                        var data = new int[M][];
+                        var random = new Random();
+                        for (var i = 0; i < M; i++)
+                        {
+                            var serverAttacks = new int[N];
+                            var attackCount = 0;
+                            for (var j = 0; j < N; j++)
+                            {
+                                if (random.NextDouble() < lambda)
+                                {
+                                    attackCount++;
+                                }
+                                serverAttacks[j] = attackCount;
+                            }
+                            data[i] = serverAttacks;
+                        }
+                        return data;
+                    }
+
+                    private Color[] GenerateRandomColors(int count)
+                    {
+                        var random = new Random();
+                        var colors = new Color[count];
+                        for (var i = 0; i < count; i++)
+                        {
+                            colors[i] = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+                        }
+                        return colors;
+                    }
+
+                    [STAThread]
+                    public static void Main()
+                    {
+                        Application.Run(new PoissonPointProcessSimulation());
+                    }
+                }
+            </code>
+        </pre>
+
+        <h3>Theoretical Part</h3>
         <h4>Find out on the web about a Poisson point process. <br>
             See if you can see any analogy with this Exercise and verify whether your distributions come close (for \(N, M\) sufficiently large) to the theoretical asymptotic distribution.</h4>
         <h5>The Poisson Point Process (PPP) is a fundamental concept in probability, statistics, and various fields where randomness and spatial or temporal distribution of points are concerned. <br>
