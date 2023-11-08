@@ -16,7 +16,7 @@
             }
 
             .container {
-                max-width: 800px;
+                max-width: 600px;
                 margin: 0 auto;
                 padding: 20px;
                 background-color: #fff;
@@ -322,4 +322,210 @@
       
         </script>
 
+        <h3>JavaScript Code</h3>
+
+        <pre>
+            <code>
+                document.getElementById('generateChart').addEventListener('click', () => {
+                    const numServers = parseInt(document.getElementById('numServers').value, 10);
+                    const numIntervals = parseInt(document.getElementById('numIntervals').value, 10);
+                    const period = parseInt(document.getElementById('period').value, 10);
+                    const lambda = parseFloat(document.getElementById('lambda').value);
+        
+                    generateChart(numServers, numIntervals, period, lambda);
+                    showProbabilityMessage(lambda, period, numIntervals);
+                });
+        
+                function showProbabilityMessage(lambda, T, N) {
+                    const probability = lambda * T / N;
+                    //const message = `La probabilità (lambda) calcolata come lambda * T / N. La probabilitÃ  * T / N Ã¨ ${probability.toFixed(4)}`;
+                    document.getElementById('probabilityMessage').textContent = message;
+                }
+        
+                function generateGrid(ctx, width, height, divX, divY){
+                    ctx.strokeStyle = "grey"; // Colore rosso
+                    ctx.lineWidth = 1; // Spessore 2 pixel
+        
+                    let currentX = 0;
+        
+                    for (let i = 0; i < width/divX; i++){
+                            // Inizia il percorso
+                            ctx.beginPath();
+                            // Muovi il contesto all'inizio della linea
+                            ctx.moveTo(currentX, height);
+        
+                            // Disegna una linea fino alla posizione finale
+                            ctx.lineTo(currentX, 0);
+        
+                            // Traccia la linea
+                            ctx.stroke();
+        
+                                    // Termina il percorso
+                            ctx.closePath();
+        
+                            currentX += divX;
+                    }
+        
+                    let currentY = 0;
+                    for (let i = 0; i < width/divX; i++){
+                            // Inizia il percorso
+                            ctx.beginPath();
+                            // Muovi il contesto all'inizio della linea
+                            ctx.moveTo(0, currentY);
+        
+                            // Disegna una linea fino alla posizione finale
+                            ctx.lineTo(width, currentY);
+        
+                            // Traccia la linea
+                            ctx.stroke();
+        
+                                    // Termina il percorso
+                             ctx.closePath();
+        
+                             currentY += divY;
+                    }
+                }
+        
+                function makeTrajectories(M, N, lambda){
+                    const data = [];
+                    for (let i = 0; i < M; i++) {
+                        const serverAttacks = [];
+                        let attackCount = 0;
+                        for (let j = 0; j < N; j++) {
+                            if (Math.random() < lambda) {
+                                attackCount++;
+                            }
+                            serverAttacks.push(attackCount);
+                        }
+                        data.push(serverAttacks);
+                    }
+        
+                    return data;
+                }
+        
+                function generateChart(M, N, T, lambda) {
+                    // Parametri
+                    const canvas = document.getElementById('attackChart');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 1500;
+                    canvas.height = 400;
+                    let offset = -50;
+        
+                    generateGrid(ctx, canvas.width, canvas.height, 20, 20);
+                    // Prepara i dati delle traiettorie degli attacchi
+                    const data = makeTrajectories(M, N, lambda);
+        
+                    // Disegna il grafico a linee
+                    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    const colors = generateRandomColors(M);
+                    for (let i = 0; i < M; i++) {
+                        const serverAttacks = data[i];
+        
+                        ctx.beginPath();
+                        ctx.moveTo(0, canvas.height);
+                        for (let j = 0; j < N; j++) {
+                            const x = (j * canvas.width) / (N - 1);
+                            const y = (canvas.height - (serverAttacks[j] / N) * canvas.height) + offset;
+                            console.log(y);
+                            ctx.lineTo(x, y);
+                            ctx.moveTo(x, y);
+                            ctx.arc(x, y, 2, 0, 2 * Math.PI);
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                        ctx.strokeStyle = colors[i];
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                    }
+                }
+        
+                function generateRandomColors(count) {
+                    const colors = [];
+                    for (let i = 0; i < count; i++) {
+                        const color = `rgba(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255},1)`;
+                        colors.push(color);
+                    }
+                    return colors;
+                }
+        
+    
+                function generateHistogram(M, N, lambda) {
+                    const canvas = document.getElementById('attackChart');
+                    const ctx = canvas.getContext('2d');
+                    const data = makeTrajectories(M, N, lambda);
+                    const colors = generateRandomColors(N); // Colore per ogni colonna dell'istogramma
+                    const barWidth = canvas.width / N;
+                    
+                    // Calcola le frequenze degli attacchi in ciascuna delle N suddivisioni
+                    const attackFrequencies = new Array(N).fill(0);
+                    for (let i = 0; i < M; i++) {
+                        const serverAttacks = data[i];
+                        for (let j = 0; j < N; j++) {
+                        attackFrequencies[j] += serverAttacks[j];
+                        }
+                    }
+                    
+                    // Trova la massima frequenza per scalare l'istogramma
+                    const maxFrequency = Math.max(...attackFrequencies);
+                    
+                    // Disegna l'istogramma
+                    for (let i = 0; i < N; i++) {
+                        const barHeight = (attackFrequencies[i] / maxFrequency) * (canvas.height - 20);
+                        const x = i * barWidth;
+                        const y = canvas.height - barHeight;
+                        ctx.fillStyle = colors[i];
+                        //ctx.fillRect(x, y, barWidth, barHeight);
+                        ctx.fillRect(canvas.width-100, canvas.height/2 + y,  Math.random() * 100 + 1, 5);
+                    }
+                }
+                    // Funzione per aggiornare il grafico quando gli input cambiano
+                    function updateChartOnChange() {
+                        const numServersInput = document.getElementById('numServers');
+                        const numIntervalsInput = document.getElementById('numIntervals');
+                        const periodInput = document.getElementById('period');
+                        const lambdaInput = document.getElementById('lambda');
+                        
+                        numServersInput.addEventListener('input', () => {
+                            generateChart();
+                            generateHistogram();
+                        });
+                        
+                        numIntervalsInput.addEventListener('input', () => {
+                            generateChart();
+                            generateHistogram();
+                        });
+                        
+                        periodInput.addEventListener('input', () => {
+                            generateChart();
+                            generateHistogram();
+                        });
+                        
+                        lambdaInput.addEventListener('input', () => {
+                            generateChart();
+                            generateHistogram();
+                        });
+                    }
+                    
+                    // Chiamare la funzione updateChartOnChange() quando la pagina Ã¨ pronta
+                    window.onload = function () {
+                    updateChartOnChange();
+                    generateChart(); // Inizializza il grafico all'avvio
+                    generateHistogram(); // Inizializza l'istogramma all'avvio
+                    };
+                    
+                    
+                    document.getElementById('generateChart').addEventListener('click', () => {
+                        const numServers = parseInt(document.getElementById('numServers').value, 10);
+                        const numIntervals = parseInt(document.getElementById('numIntervals').value, 10);
+                        const period = parseInt(document.getElementById('period').value, 10);
+                        const lambda = parseFloat(document.getElementById('lambda').value);
+                    
+                        generateChart(numServers, numIntervals, period, lambda);
+                        generateHistogram(numServers, numIntervals, lambda);
+                        showProbabilityMessage(lambda, period, numIntervals);
+                    });
+            </code>  
+        </pre>
+
+        <h3>C# Code</h3>
     </body>
