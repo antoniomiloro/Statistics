@@ -22,3 +22,7 @@
         tr:nth-child(odd) {
             background-color: #ddd;
         }
+
+        body{
+            background-color: darkslategrey;
+        }
