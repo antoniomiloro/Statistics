@@ -84,6 +84,37 @@
                 color: #007BFF;
                 font-weight: bold;
             }
+
+            .canvas-container {
+                display: inline-block;
+                resize: both;
+                overflow: auto;
+                border: 1px solid #ccc;
+                margin: 10px;
+                position: relative;
+                background-color: whitesmoke;
+                width: 60%;
+                height: 60%;
+                display: block;
+            }
+
+            .canvas-row {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .canvas-center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .canvas-container canvas {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
         </style>
     </head>
     <body>
@@ -812,9 +843,9 @@
             In both cases, there is a probability of losing or winning, and the outcome depends on a series of random events. <br>
             The simulation in this exercise models the probability of a system being compromised by an attacker, and the Gambler's Ruin Problem models the probability of a gambler losing all of their money.
             One consideration that the simulation suggests is the importance of having secure systems in place. Just as a gambler can lose all of their money if they do not have a strategy in place, <br>
-            a system can be compromised if it is not secure. <br>
+            a system can be compromised if it is not secure. <br><br>
             
-            Some resources: <br>
+            Some resources: <br><br>
             (1) Gambler's ruin - Wikipedia. https://en.wikipedia.org/wiki/Gambler%27s_ruin. <br>
             (2) What Is The Gambler’s Ruin Problem (Explained For Beginners) - mathvswild. https://mathvswild.com/what-is-the-gamblers-ruin-problem/. <br>
             (3) 1 Gambler’s Ruin Problem - Columbia University. http://www.columbia.edu/~ks20/FE-Notes/4700-07-Notes-GR.pdf. <br>
