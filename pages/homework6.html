@@ -23,10 +23,6 @@
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             }
-            canvas {
-                border: 1px solid #000;
-                flex-grow: 1;
-            }
 
             label {
                 display: block;
@@ -52,47 +48,41 @@
                 background-color: #0056b3;
             }
 
-            #simulationControls {
-                border: 1px solid black;
-                padding: 10px;
-                border-radius: 10px;
-                background-color:mediumslateblue;
-                color:whitesmoke;
-            }
-            #description {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            .canvas-container {
-                display: inline-block;
-                resize: both;
-                overflow: auto;
-                border: 1px solid #ccc;
-                margin: 10px;
-                position: relative;
-                background-color: whitesmoke;
-                width: 60%;
-                height: 60%;
-                display: block;
-            }
-
-            .canvas-row {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-
-            .canvas-center {
-                display: flex;
-                justify-content: center;
-            }
-
-            .canvas-container canvas {
+            canvas {
                 width: 100%;
-                height: 100%;
+                height: 400px;
                 display: block;
+                margin: 20px 0;
+                border: 2px solid #000;
+                border-radius: 10px;
+            }
+
+            .axis-labels {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .axis-labels-x {
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                font-size: 14px;
+                color: #555;
+            }
+
+            .axis-labels-y {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 12px;
+            }
+
+            .statistics-label {
+                text-align: center;
+                font-size: 28px;
+                margin: 30px 0;
+                color: #007BFF;
+                font-weight: bold;
             }
         </style>
     </head>
@@ -103,7 +93,7 @@
             Simulate and represent the probabilities of a system being discarded, for various values of P, <br>
             example: P = k*10 (k=2,...,10), conditional on the 3 cases for S: S = 20, S = 60, S = 100 (or any other value of S of your choice that you find useful to explore (it could be a user parameter).</h5>
         
-        <div id="simulationControls">
+        <div class="container">
             <label for="numServers">Number of servers (M):</label>
             <input type="number" id="numServers" value="5">
 
@@ -123,7 +113,7 @@
                 <option value="100">100</option>
             </select>
             <br> <br>
-            <button onclick="updateAllCharts()">Start simulation</button>
+            <button id="generateChart">Start simulation</button>
         </div>
     
         <div class="centered">
