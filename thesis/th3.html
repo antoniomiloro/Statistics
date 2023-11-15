@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Statistics</title>
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+
+            .formula-box {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 200px;
+                width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Th3: The Gaussian Distribution Meaning, Derivations, Simulations</h1>
+        <h4>
+            The Gaussian distribution, also known as the **normal distribution**, is a probability distribution that is widely used for modeling continuous random variables ¹³. <br>
+            It is a bell-shaped curve that is dependent on the mean (μ) and the standard deviation (σ) ¹. The probability density function of the univariate Gaussian distribution is given by: <br>
+            <div class="formula-box">
+                $$f(x, \mu, \sigma) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+            </div>
+            where: <br>
+            &nbsp    - f(x) is the probability density of obtaining the value xx. <br>
+            &nbsp    - μ is the mean of the distribution. <br>
+            &nbsp    - σ is the standard deviation of the distribution. <br>
+            &nbsp    - π is the value of pi (approximately 3.14159). <br>
+            The peak of the graph is always located at the mean and the area under the curve is always exactly equal to 1 ¹. 68% of all the values lie within one standard deviation of the mean. <br>
+            At 2σ, this increases to 95%, and 99.7% of the values lie within 3σ of the mean ¹. <br>
+
+            The demonstration requires calculating the integral of the pdf over the entire actual range, which guarantees that the total area under the curve is equal to 1 (as it represents the total probability). <br>
+            However, this process involves highly advanced integral calculus and mathematical analysis techniques that are intricate and require extensive calculus and probability knowledge. <br>
+            For a comprehensive presentation of the normal distribution, it is recommended that one refers to advanced statistical or probability textbooks as a full demonstration would necessitate significant space and detailed mathematical notation. <br>
+
+            Here is a simulation of the Gaussian distribution with mean 0 and standard deviation 1: <br>
+
+            <div class="formula-box">
+                import numpy as np
+                import matplotlib.pyplot as plt
+
+                mu, sigma = 0, 1 # mean and standard deviation
+                s = np.random.normal(mu, sigma, 1000)
+
+                count, bins, ignored = plt.hist(s, 30, density=True)
+                plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) *
+                        np.exp( - (bins - mu)**2 / (2 * sigma**2) ),
+                        linewidth=2, color='r')
+                plt.show()
+            </div>
+            <hr>
+            Some resources: <br>
+            (1) Gaussian (Normal) Distribution | Academo.org - Free, interactive .... https://academo.org/demos/gaussian-distribution/. <br>
+            (2) Normal distribution - Wikipedia. https://en.wikipedia.org/wiki/Normal_distribution. <br>
+            (3) The Gaussian distribution - Washington University in St. Louis. https://www.cse.wustl.edu/~garnett/cse515t/fall_2019/files/lecture_notes/5.pdf. <br>
+            (4) github.com. https://github.com/Randle9000/pythonCheatSheet/tree/536a18bb632f201ed48c09a8c2fdc0c36b1c672c/Math%2FProbability%2FEx2.py. <br>
+            (5) github.com. https://github.com/ds18b20/ds18b20.github.io.source/tree/06ea1afad98fc55b91f3476de4c4f1113440b9c9/source%2F_posts%2FNumpy-06-random.md. <br>
+            (6) github.com. https://github.com/ni-phy/year4-project/tree/061b6fe1152b84ee84a1e00c8296c9a161da912b/Nikolas%2Fgyrochronology%2Ftfp_test.py. <br>
+            (7) github.com. https://github.com/rpalloni/ds/tree/ce5e533ee071df5a7be2b751a19cb88327109d80/statistics%2Fhypothesis_testing.py. <br>
+            (8) github.com. https://github.com/UCEMA-QUANt/Manejo-de-Riesgo/tree/70788a73b7a6556b7b1e51acb310f1919e896952/Example_Quantile.py. <br>
+            (9) github.com. https://github.com/ClaudiuHiticas/ArtificialIntelligence/tree/86d6beb42bdb505b97f37761b3ce2e91525aa87f/Lab%201%2Fdistributions.py.
+        </h4>
+    </body>
+</html>
