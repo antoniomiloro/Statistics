@@ -51,24 +51,25 @@
             For a comprehensive presentation of the normal distribution, it is recommended that one refers to advanced statistical or probability textbooks as a full demonstration would necessitate significant space and detailed mathematical notation. <br>
             <br>
             Here is a simulation of the Gaussian distribution with mean 0 and standard deviation 1: <br><br>
-
-            <div class="formula-box1">
+          
                 <pre>
                     <code>
-                        import numpy as np
-                        import matplotlib.pyplot as plt
+                        <div class="formula-box1">
+                            import numpy as np
+                            import matplotlib.pyplot as plt
 
-                        mu, sigma = 0, 1 # mean and standard deviation
-                        s = np.random.normal(mu, sigma, 1000)
+                            mu, sigma = 0, 1 # mean and standard deviation
+                            s = np.random.normal(mu, sigma, 1000)
 
-                        count, bins, ignored = plt.hist(s, 30, density=True)
-                        plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) *
-                                np.exp( - (bins - mu)**2 / (2 * sigma**2) ),
-                                linewidth=2, color='r')
-                        plt.show()
+                            count, bins, ignored = plt.hist(s, 30, density=True)
+                            plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) *
+                                    np.exp( - (bins - mu)**2 / (2 * sigma**2) ),
+                                    linewidth=2, color='r')
+                            plt.show()
+                        </div>
                     </code>
                 </pre>
-            </div>
+            
             <hr>
             Some resources: <br>
             (1) Gaussian (Normal) Distribution | Academo.org - Free, interactive .... https://academo.org/demos/gaussian-distribution/. <br>
