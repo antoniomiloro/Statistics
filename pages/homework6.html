@@ -95,16 +95,16 @@
         
         <div class="container">
             <label for="numServers">Number of servers (M):</label>
-            <input type="number" id="numServers" value="5">
+            <input type="number" id="M" value="5">
 
             <label for="numIntervals">Number of attacks (N):</label>
-            <input type="number" id="numIntervals" value="10">
+            <input type="number" id="N" value="10">
 
             <label for="lambda">Probability of succes (p):</label>
-            <input type="number" id="lambda" value="0.3">
+            <input type="number" id="p" value="0.3">
 
             <label for="period">Penetration score (P):</label>
-            <input type="number" id="period" value="10">
+            <input type="number" id="P" value="10">
 
             <p>Security score (S):</p>
             <select id="S" style="font-size: 20px; padding: 10px; border-radius: 5px;">
@@ -113,7 +113,7 @@
                 <option value="100">100</option>
             </select>
             <br> <br>
-            <button id="generateChart">Start simulation</button>
+            <button onclick="updateAllCharts()">Start simulation</button>
         </div>
     
         <div class="centered">
