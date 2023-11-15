@@ -23,6 +23,10 @@
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             }
+            canvas {
+                border: 1px solid #000;
+                flex-grow: 1;
+            }
 
             label {
                 display: block;
@@ -48,41 +52,47 @@
                 background-color: #0056b3;
             }
 
-            canvas {
-                width: 100%;
-                height: 400px;
+            #simulationControls {
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 10px;
+            background-color:mediumslateblue;
+            color:whitesmoke;
+            }
+            #description {
+                font-size: 20px;
+                font-weight: bold;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .canvas-container {
+                display: inline-block;
+                resize: both;
+                overflow: auto;
+                border: 1px solid #ccc;
+                margin: 10px;
+                position: relative;
+                background-color: whitesmoke;
+                width: 60%;
+                height: 60%;
                 display: block;
-                margin: 20px 0;
-                border: 2px solid #000;
-                border-radius: 10px;
             }
 
-            .axis-labels {
-                display: flex;
-                justify-content: space-between;
-            }
-
-            .axis-labels-x {
+            .canvas-row {
                 display: flex;
                 justify-content: center;
-                align-items: flex-end;
-                font-size: 14px;
-                color: #555;
+                align-items: center;
+                flex-wrap: wrap;
             }
 
-            .axis-labels-y {
+            .canvas-center {
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                margin-left: 12px;
+                justify-content: center;
             }
 
-            .statistics-label {
-                text-align: center;
-                font-size: 28px;
-                margin: 30px 0;
-                color: #007BFF;
-                font-weight: bold;
+            .canvas-container canvas {
+                width: 100%;
+                height: 100%;
+                display: block;
             }
         </style>
     </head>
