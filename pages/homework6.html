@@ -116,7 +116,58 @@
             <button id="generateChart">Start simulation</button>
         </div>
     
+        <div class="centered">
 
+            <h3 id="description"></h3>
+        </div>
+    
+        <div class="canvas-center">
+            <div class="canvas-container">
+                <div class="canvas-row">
+                        <canvas id="securityChartOriginal" width="800" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    
+                <div class="centered" style="display: none;">
+    
+                    <h3 id="description">Cumulative Frequency</h3>
+                </div>
+            <div class="canvas-center" style="display: none;">
+                <div class="canvas-container">
+                    <div class="canvas-row">
+                            <canvas id="securityChart1b" width="800" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+                <div class="centered" style="display: none;">
+    
+                    <h3 id="description">Relative Frequency</h3>
+                </div>
+            <div class="canvas-center" style="display: none;">
+                <div class="canvas-container">
+                    <div class="canvas-row">
+                            <canvas id="securityChart1c" width="800" height="400" ></canvas>
+                    </div>
+                </div>
+            </div>
+                <div class="centered" style="display: none;">
+    
+                    <h3 id="description">Normalized Frequency</h3>
+                </div>
+            <div class="canvas-center" style="display: none;">
+                <div class="canvas-container canvas">
+                    <div class="canvas-row">
+                        <canvas id="securityChart1d" width="800" height="400" ></canvas>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="unsecure_tracker">
+            </div>
+    
+            <div id="unsecure_probability">
+            </div>
 
         <script>
             const canvas = document.getElementById('securityChartOriginal');
