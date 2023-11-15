@@ -53,11 +53,11 @@
             }
 
             #simulationControls {
-            border: 1px solid black;
-            padding: 10px;
-            border-radius: 10px;
-            background-color:mediumslateblue;
-            color:whitesmoke;
+                border: 1px solid black;
+                padding: 10px;
+                border-radius: 10px;
+                background-color:mediumslateblue;
+                color:whitesmoke;
             }
             #description {
                 font-size: 20px;
@@ -103,7 +103,7 @@
             Simulate and represent the probabilities of a system being discarded, for various values of P, <br>
             example: P = k*10 (k=2,...,10), conditional on the 3 cases for S: S = 20, S = 60, S = 100 (or any other value of S of your choice that you find useful to explore (it could be a user parameter).</h5>
         
-        <div class="container">
+        <div id="simulationControls">
             <label for="numServers">Number of servers (M):</label>
             <input type="number" id="numServers" value="5">
 
@@ -123,7 +123,7 @@
                 <option value="100">100</option>
             </select>
             <br> <br>
-            <button id="generateChart">Start simulation</button>
+            <button onclick="updateAllCharts()">Start simulation</button>
         </div>
     
         <div class="centered">
