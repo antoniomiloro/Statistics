@@ -19,12 +19,24 @@
     </head>
     <body>
         <h1>Th4: The Glivenko-Cantelli theorem, Proof, Simulations</h1>
-        <h4>
+        
             The Glivenko-Cantelli theorem is a fundamental result in probability theory that describes the convergence of the empirical distribution function to the true distribution function. <br>
             It is named after Valery Ivanovich Glivenko and Francesco Paolo Cantelli ². <br>
             The theorem states that the empirical distribution function converges uniformly almost surely to the theoretical distribution for a random variable X ∈ R ¹. <br>
+            Formally, if \(X_1, X_2, \ldots, X_n\) are independent and identically distributed random variables with cumulative distribution function (CDF) \(F(x)\), and \(F_n(x)\) is the empirical distribution function based on the sample, then the Glivenko–Cantelli theorem asserts that: <br>
+                \[ \sup_{x \in \mathbb{R}} |F_n(x) - F(x)| \rightarrow 0 \text{ almost surely as } n \rightarrow \infty. \]
+            <br>
+            This convergence is uniform, meaning that the maximum difference between the empirical and true distribution functions tends to zero almost surely. <br>
+            
+            So, the Glivenko-Cantelli theorem is crucial because it affirms that through sampling, we can effectively capture the characteristics dictated by the distribution function \( F \). As the sample size grows, the empirical distribution function converges uniformly to the true distribution function, <br>
+            indicating that the probabilities inferred from samples become more accurate with increased data availability. <br>
+            Consequently, studying distributions through samples is a valid and reliable approach for learning and making inferences about the underlying distribution. <br>
+            
             In other words, the difference between the empirical distribution function and the true distribution function approaches zero as the sample size increases ². <br>
-            A constructive proof of the theorem is provided in ³. The proof is based on the concept of the Kolmogorov-Smirnov statistic, which measures the distance between the empirical distribution function and the true distribution function ¹. <br><br>
+            <br>
+            <strong><u>Proof:</u></strong>
+            A constructive proof of the theorem is provided in ³. <br>
+            The proof is based on the concept of the Kolmogorov-Smirnov statistic, which measures the distance between the empirical distribution function and the true distribution function ¹. <br><br>
             The proof can be broken down into several steps. <br>
             First, we can apply the strong law of large numbers to the sequence I{Xi ≤ x}, i = 1, . . . n to assert that Fn(x) ˆ → F (x) a.s. <br>
             In this sense, Fn(x) ˆ is a reasonable estimate of F (x) for a given x ∈ R. But is Fn(x) ˆ a reasonable estimate of the F (x) when both are viewed as functions of x? The Glivenko-Cantelli theorem provides an answer to this question. <br>
@@ -37,11 +49,11 @@
             As the sample size increases, the difference between the two functions approaches zero, which is consistent with the Glivenko-Cantelli theorem ².<br>
 
             <hr>
-            Some resources: <br>
+            <strong>Some resources</strong>: <br>
             (1) Glivenko–Cantelli theorem - Wikipedia. https://en.wikipedia.org/wiki/Glivenko%E2%80%93Cantelli_theorem. <br>
             (2) 1 The Glivenko-Cantelli Theorem - University of Chicago. https://home.uchicago.edu/~amshaikh/webfiles/glivenko-cantelli.pdf. <br>
             (3) Constructive Proof of the Glivenko-Cantelli Theorem. https://arxiv.org/pdf/2110.13236v1.pdf.
-        </h4>
+        
         
     </body>
 </html>
