@@ -46,40 +46,58 @@
             The peak of the graph is always located at the mean and the area under the curve is always exactly equal to 1 ¹. 68% of all the values lie within one standard deviation of the mean. <br>
             At 2σ, this increases to 95%, and 99.7% of the values lie within 3σ of the mean ¹. <br>
 
-            The demonstration requires calculating the integral of the pdf over the entire actual range, which guarantees that the total area under the curve is equal to 1 (as it represents the total probability). <br>
-            However, this process involves highly advanced integral calculus and mathematical analysis techniques that are intricate and require extensive calculus and probability knowledge. <br>
-            For a comprehensive presentation of the normal distribution, it is recommended that one refers to advanced statistical or probability textbooks as a full demonstration would necessitate significant space and detailed mathematical notation. <br>
+            Moreover, Gaussian distributions have some unique properties. For instance, any linear combination of a fixed collection of normal deviates is a normal deviate.
+                <br>
+                <br>
+            <strong><u>Standard normal distribution</u></strong>
+            The simplest case of a normal distribution is known as the standard normal distribution. This is a special case when μ=0 and σ=1, and it is described by this probability density function: <br>
+            <script type="math/tex">
+                \phi(z) = \frac{e^{-\frac{z^2}{2}}}{\sqrt{2\pi}}
+            </script>
             <br>
-            Here is a simulation of the Gaussian distribution with mean 0 and standard deviation 1: <br><br>
-          
-                <pre>
-                    <code>
-                            import numpy as np
-                            import matplotlib.pyplot as plt
-
-                            mu, sigma = 0, 1 # mean and standard deviation
-                            s = np.random.normal(mu, sigma, 1000)
-
-                            count, bins, ignored = plt.hist(s, 30, density=True)
-                            plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) *
-                                    np.exp( - (bins - mu)**2 / (2 * sigma**2) ),
-                                    linewidth=2, color='r')
-                            plt.show()
-                        
-                    </code>
-                </pre>
+            Where z is a continuous random variable that has a mean of 0 and a variance and standard deviation of 1. <br>
+            The 
+            <script type="math/tex">
+                \frac{1}{\sqrt{2\pi}} 
+            </script> is there to make sure that the area under the PDF is equal to one. <br>
+            <br>
+            <strong><u>General normal distribution</u></strong>
+            Every normal distribution is a version of the standard normal distribution, whose domain has been stretched by the standard deviation and then translated by the mean value: <br>
+            <script type="math/tex">
+                f(x| \mu, \sigma^2) = \frac{1}{v} \psi\left(\frac{x - \mu}{\sigma}\right)
+            </script>
+            
+            <u>Applications</u> <br>
+            The Gaussian distribution has several utilities and applications, including: <br>
+                <ol>
+                    <li>
+                    <strong><u>Modeling Data</u></strong>: The Gaussian distribution is often used to model and describe real-world data. Many natural phenomena follow a normal distribution pattern. When data is approximately normally distributed, it allows for the use of various statistical techniques.
+                    </li>
+                    <li>
+                    <strong><u>Statistical Inference</u></strong>: Many statistical tests rely on the assumption of normality, which simplifies the mathematical procedures and enhances the interpretability of results.
+                    </li>
+                    <li>
+                    <strong><u>Machine Learning</u></strong>: Gaussian distributions are used in various machine learning algorithms. For example, Gaussian Naive Bayes is a classification algorithm that assumes that features follow a Gaussian distribution. Also, Gaussian Mixture Models are used for clustering and density estimation in unsupervised learning.
+                    </li>
+                    <li>
+                    <strong><u>Process Control</u></strong>: Gaussian distribution is used to monitor and control processes. It helps in identifying deviations and anomalies in production, ensuring products meet quality standards.
+                    </li>
+                    <li>
+                    <strong><u>Risk Assessment</u></strong>: In finance, the Gaussian distribution is often used to model asset returns and assess financial risk. The concept of value at risk (VaR) relies on the assumption of normally distributed returns.
+                    </li>
+                    <li>
+                    <strong><u>Physics and Engineering</u></strong>: The Gaussian distribution is essential in various areas of physics and engineering, such as thermodynamics, quantum mechanics, and the modeling of random processes.
+                    </li>
+                    <li>
+                    <strong><u>Social Sciences</u></strong>: Gaussian distributions are used in various social science disciplines to analyze and model human behaviors, survey data, and psychological test scores.
+                    </li>
+                </ol>
             
             <hr>
             Some resources: <br>
             (1) Gaussian (Normal) Distribution | Academo.org - Free, interactive .... https://academo.org/demos/gaussian-distribution/. <br>
             (2) Normal distribution - Wikipedia. https://en.wikipedia.org/wiki/Normal_distribution. <br>
-            (3) The Gaussian distribution - Washington University in St. Louis. https://www.cse.wustl.edu/~garnett/cse515t/fall_2019/files/lecture_notes/5.pdf. <br>
-            (4) github.com. https://github.com/Randle9000/pythonCheatSheet/tree/536a18bb632f201ed48c09a8c2fdc0c36b1c672c/Math%2FProbability%2FEx2.py. <br>
-            (5) github.com. https://github.com/ds18b20/ds18b20.github.io.source/tree/06ea1afad98fc55b91f3476de4c4f1113440b9c9/source%2F_posts%2FNumpy-06-random.md. <br>
-            (6) github.com. https://github.com/ni-phy/year4-project/tree/061b6fe1152b84ee84a1e00c8296c9a161da912b/Nikolas%2Fgyrochronology%2Ftfp_test.py. <br>
-            (7) github.com. https://github.com/rpalloni/ds/tree/ce5e533ee071df5a7be2b751a19cb88327109d80/statistics%2Fhypothesis_testing.py. <br>
-            (8) github.com. https://github.com/UCEMA-QUANt/Manejo-de-Riesgo/tree/70788a73b7a6556b7b1e51acb310f1919e896952/Example_Quantile.py. <br>
-            (9) github.com. https://github.com/ClaudiuHiticas/ArtificialIntelligence/tree/86d6beb42bdb505b97f37761b3ce2e91525aa87f/Lab%201%2Fdistributions.py.
+            (3) The Gaussian distribution - Washington University in St. Louis. https://www.cse.wustl.edu/~garnett/cse515t/fall_2019/files/lecture_notes/5.pdf. 
         </h4>
         
     </body>
