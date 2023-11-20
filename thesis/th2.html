@@ -27,14 +27,18 @@
     </head>
     <body>
         <h1>Th2: The CLT Meaning, Proof, Simulations</h1>
-        <h4>
+        
             The Central Limit Theorem (CLT) is a fundamental concept in probability theory that states that if we take sufficiently large samples from a population, the samples’ means will be normally distributed, even if the population isn’t normally distributed ¹²³. <br> 
             This theorem is widely used in statistical inference and hypothesis testing. <br>
             The CLT has several key characteristics: <br>
             &nbsp    - The sample size must be sufficiently large. <br>
             &nbsp    - The samples must be independent and identically distributed. <br>
             &nbsp    - The population distribution can be any distribution. <br>
-
+            
+            <u>Theorem</u>: <br>
+            Let X1, X2, ..., Xn  denote a random sample of n independent observations from a population with overall expected value (average) μ  and finite variance σ^2, and let \( \bar{x}_n\)  denote the sample mean of that sample. <br>
+            Then \(\lim_{{n \to \infty}} \frac{{\bar{x}_n - \mu}}{{\sigma_{\bar{x}_n}}}\) , where \(\sigma_{\bar{x}_n} = \frac{\sigma}{\sqrt{n}}\) , is the standard normal distribution. <br>
+            
             The formula for the CLT is as follows: <br>
             <div class="formula-box">
                 Z = (X̄ - μ) / (σ / √n)
@@ -46,8 +50,33 @@
             &nbsp    - "σ" is the population standard deviation. <br>
             &nbsp    - "n" is the sample size. <br>
 
-            The CLT has been proven mathematically, and its proof is beyond the scope of this response. <br>
-            However, it is important to note that the CLT is a fundamental concept in probability theory and has been widely used in simulations and statistical analysis ¹²³. <br><br>
+            <u>Proof</u>: <br>>
+            We start by defining the sample mean: <br>
+                \(\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n}X_i\)
+            <br>
+            where \(X_1, X_2, \ldots, X_n\) are independent and identically distributed random variables with mean \(\mu\) and finite variance \(\sigma^2\). <br>
+
+            The CLT can be outlined as follows: <br>
+
+                Standardize the sample mean: <br>
+                
+                Define the standardized variable \(Z_n\) as: \(Z_n = \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}}\) <br>
+
+                Show that as \(n\) goes to infinity, the distribution of \(Z_n\) approaches a standard normal distribution (\(N(0,1)\)): <br>
+
+                \begin{equation}
+                    \lim_{n \to \infty} P(Z_n \leq z) = \Phi(z)
+                \end{equation}
+            <br>
+                where \(\Phi(z)\) is the cumulative distribution function of the standard normal distribution. <br>
+
+                This demonstrates that the sample mean \(\bar{X}_n\) is approximately normally distributed with mean \(\mu\) and variance \(\sigma^2/n\): <br>
+
+                \begin{equation}
+                    \bar{X}_n \sim N(\mu, \sigma^2/n)
+                \end{equation}
+            <br>
+                The CLT implies that as the sample size increases, the distribution of \(\bar{X}_n\) becomes closer to a normal distribution. This is a crucial result in statistics, allowing us to use the normal distribution for various statistical inferences. <br><br>
 
             <hr>
             Some resources: <br>
@@ -56,5 +85,5 @@
             (3) What Is the Central Limit Theorem With Examples (CLT) | Built In. https://builtin.com/data-science/understanding-central-limit-theorem. <br>
             (4) Central Limit Theorem - Overview, Example, History. https://corporatefinanceinstitute.com/resources/data-science/central-limit-theorem/. <br>
             (5) Central limit theorem - Wikipedia. https://en.wikipedia.org/wiki/Central_limit_theorem.
-        </h4>
+        
     </body>
