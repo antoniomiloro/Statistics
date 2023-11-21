@@ -15,6 +15,15 @@
                 background-color: bisque;
                 font-family:Arial, Helvetica, sans-serif;
             }
+
+            .formula-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 200px;
+                width: 100%;
+            }
         </style>
     </head>
     <body>
@@ -24,7 +33,9 @@
             It is named after Valery Ivanovich Glivenko and Francesco Paolo Cantelli ². <br>
             The theorem states that the empirical distribution function converges uniformly almost surely to the theoretical distribution for a random variable X ∈ R ¹. <br>
             Formally, if \(X_1, X_2, \ldots, X_n\) are independent and identically distributed random variables with cumulative distribution function (CDF) \(F(x)\), and \(F_n(x)\) is the empirical distribution function based on the sample, then the Glivenko–Cantelli theorem asserts that: <br>
-                \[ \sup_{x \in \mathbb{R}} |F_n(x) - F(x)| \rightarrow 0 \text{ almost surely as } n \rightarrow \infty. \]
+                <div class="formula-box">
+                    \[ \sup_{x \in \mathbb{R}} |F_n(x) - F(x)| \rightarrow 0 \text{ almost surely as } n \rightarrow \infty. \]
+                </div>
             <br>
             This convergence is uniform, meaning that the maximum difference between the empirical and true distribution functions tends to zero almost surely. <br>
             
@@ -38,8 +49,8 @@
             A constructive proof of the theorem is provided in ³. <br>
             The proof is based on the concept of the Kolmogorov-Smirnov statistic, which measures the distance between the empirical distribution function and the true distribution function ¹. <br><br>
             The proof can be broken down into several steps. <br>
-            First, we can apply the strong law of large numbers to the sequence I{Xi ≤ x}, i = 1, . . . n to assert that Fn(x) ˆ → F (x) a.s. <br>
-            In this sense, Fn(x) ˆ is a reasonable estimate of F (x) for a given x ∈ R. But is Fn(x) ˆ a reasonable estimate of the F (x) when both are viewed as functions of x? The Glivenko-Cantelli theorem provides an answer to this question. <br>
+            First, we can apply the strong law of large numbers to the sequence I{Xi ≤ x}, i = 1, . . . n to assert that Fn(x) → F (x) a.s. <br>
+            In this sense, Fn(x) ˆ is a reasonable estimate of F (x) for a given x ∈ R. But is Fn(x) a reasonable estimate of the F (x) when both are viewed as functions of x? The Glivenko-Cantelli theorem provides an answer to this question. <br>
             It asserts that the empirical distribution function converges uniformly almost surely to the theoretical distribution for a random variable X ∈ R ¹. In other words, <br>
             the difference between the empirical distribution function and the true distribution function approaches zero as the sample size increases ². <br>
             <br>
