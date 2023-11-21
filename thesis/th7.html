@@ -37,7 +37,7 @@
         <strong>Financial Transactions:</strong> Stock market data, currency exchange rates forming data streams. <br>
         <strong>Network Traffic:</strong> Data streams in the context of network monitoring include the continuous flow of packets and information across a network. <br><br>
         Managing and analyzing data streams require specialized techniques and algorithms that can handle the challenges posed by the dynamic and continuous nature of the data. Online algorithms are one example of techniques designed for processing data streams efficiently. <br><br>
-        In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algorithm, without having the entire input available from the start. <br>
+        In computer science, an <strong>Online Algorithm</strong> is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algorithm, without having the entire input available from the start. <br>
         In contrast, an offline algorithm is given the whole problem data from the beginning and is required to output an answer which solves the problem at hand. <br>
         In operations research, the area in which online algorithms are developed is called online optimization. <br>
         As an example, consider the sorting algorithms selection sort and insertion sort: selection sort repeatedly selects the minimum element from the unsorted remainder and places it at the front, which requires access to the entire input; it is thus an offline algorithm. <br>
@@ -52,24 +52,24 @@
         <strong><u>Limited Memory</u>:</strong> Algorithms must operate within constrained memory limits. <br>
         <strong><u>Single Pass</u>:</strong> 
         Typically, data is processed only once as it arrives and cannot be revisited. <br>
-        For example we could compute the mean (average) of a data stream without storing all individual values. <br>
+        For example we could compute the mean (average) of a data stream without storing all individual values. <br><br>
         
         <div class="formula-box">
-            class OnlineMean:
-            def __init__(self):
-                self.count = 0  # Number of elements processed
-                self.mean = 0.0  # Current mean
+            class OnlineMean: <br>
+            def __init__(self): <br>
+                self.count = 0  # Number of elements processed <br>
+                self.mean = 0.0  # Current mean <br><br>
         
-            def update_mean(self, new_value):
-                self.count += 1
-                delta = new_value - self.mean
-                self.mean += delta / self.count
+            def update_mean(self, new_value): <br>
+                self.count += 1 <br>
+                delta = new_value - self.mean <br>
+                self.mean += delta / self.count <br><br>
         
-            def get_mean(self):
+            def get_mean(self): <br>
                 return self.mean
         </div>
         <br>
-        the previous python code works as follows: <br>
+        the previous python code works as follows: <br><br>
         
         <strong>Initialization:</strong> Initialize count as 0 and mean as 0.0. <br>
         <strong>Update Mean:</strong> As each new value arrives, update the mean using the formula: <br>
@@ -80,7 +80,7 @@
         
         <strong>Streaming Analytics:</strong> Real-time monitoring of data (e.g., network traffic, sensor data). <br>
         <strong>Financial Data Processing:</strong> Analyzing stock market data streams for trends or anomalies. <br>
-        <strong>Machine Learning:</strong> Online learning algorithms for continuously evolving models using streaming data. <br>
+        <strong>Machine Learning:</strong> Online learning algorithms for continuously evolving models using streaming data. <br><br>
         Online algorithms for data streams offer efficient solutions to process continuous data while maintaining limited memory usage. These algorithms provide approximate solutions for various computational problems, making them crucial in handling massive and continuous data flows. <br>
         
         By employing techniques like approximation, sampling, and summarization, online algorithms enable the extraction of valuable insights from data streams while coping with the challenges posed by their infinite and voluminous nature. <br><br>
