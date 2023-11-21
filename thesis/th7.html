@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Statistics</title>
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            body{
+                background-color: bisque;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            .formula-box {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 200px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Th7: "Online" Algorithms (Data Streams): Ideas and code</h1>
+        
+        A stream of data refers to a continuous and potentially infinite flow of information that is generated and processed over time. Instead of being presented as a static set, a data stream continuously evolves. Here are some key characteristics of data streams: <br>
+        Examples of data streams include: <br><br>
+        <strong>Sensor Data:</strong> Data from IoT devices, such as temperature sensors, can be streamed in real-time. <br>
+        <strong>Social Media Feeds:</strong> photos and posts on platforms like Instagram and Facebook form continuous streams of data. <br>
+        <strong>Financial Transactions:</strong> Stock market data, currency exchange rates forming data streams. <br>
+        <strong>Network Traffic:</strong> Data streams in the context of network monitoring include the continuous flow of packets and information across a network. <br><br>
+        Managing and analyzing data streams require specialized techniques and algorithms that can handle the challenges posed by the dynamic and continuous nature of the data. Online algorithms are one example of techniques designed for processing data streams efficiently. <br><br>
+        In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algorithm, without having the entire input available from the start. <br>
+        In contrast, an offline algorithm is given the whole problem data from the beginning and is required to output an answer which solves the problem at hand. <br>
+        In operations research, the area in which online algorithms are developed is called online optimization. <br>
+        As an example, consider the sorting algorithms selection sort and insertion sort: selection sort repeatedly selects the minimum element from the unsorted remainder and places it at the front, which requires access to the entire input; it is thus an offline algorithm. <br>
+        On the other hand, insertion sort considers one input element per iteration and produces a partial solution without considering future elements. Thus insertion sort is an online algorithm. <br>
+        Note that the final result of an insertion sort is optimum, i.e., a correctly sorted list. For many problems, online algorithms cannot match the performance of offline algorithms. <br>
+        If the ratio between the performance of an online algorithm and an optimal offline algorithm is bounded, the online algorithm is called competitive. <br>
+        Not every offline algorithm has an efficient online counterpart. <br><br>
+        
+        <h3><strong><u>Characteristics of Data Streams:</u></strong></h3>
+        
+        <strong><u>Unbounded Data</u>:</strong> Data streams are continuous and unending, making it impossible to store all data in memory. <br>
+        <strong><u>Limited Memory</u>:</strong> Algorithms must operate within constrained memory limits. <br>
+        <strong><u>Single Pass</u>:</strong> 
+        Typically, data is processed only once as it arrives and cannot be revisited. <br>
+        For example we could compute the mean (average) of a data stream without storing all individual values. <br>
+        
+        <div class="formula-box">
+            class OnlineMean:
+            def __init__(self):
+                self.count = 0  # Number of elements processed
+                self.mean = 0.0  # Current mean
+        
+            def update_mean(self, new_value):
+                self.count += 1
+                delta = new_value - self.mean
+                self.mean += delta / self.count
+        
+            def get_mean(self):
+                return self.mean
+        </div>
+        <br>
+        the previous python code works as follows: <br>
+        
+        <strong>Initialization:</strong> Initialize count as 0 and mean as 0.0. <br>
+        <strong>Update Mean:</strong> As each new value arrives, update the mean using the formula: <br>
+        new_mean = old_mean + (new_value - old_mean) / count <br>
+        <strong>Get Mean:</strong> Return the current mean when required. <br>
+
+        Some of the fields where online algorithms are used are: <br>
+        
+        <strong>Streaming Analytics:</strong> Real-time monitoring of data (e.g., network traffic, sensor data). <br>
+        <strong>Financial Data Processing:</strong> Analyzing stock market data streams for trends or anomalies. <br>
+        <strong>Machine Learning:</strong> Online learning algorithms for continuously evolving models using streaming data. <br>
+        Online algorithms for data streams offer efficient solutions to process continuous data while maintaining limited memory usage. These algorithms provide approximate solutions for various computational problems, making them crucial in handling massive and continuous data flows. <br>
+        
+        By employing techniques like approximation, sampling, and summarization, online algorithms enable the extraction of valuable insights from data streams while coping with the challenges posed by their infinite and voluminous nature. <br><br>
+                   
+            <hr>
+            <strong>Some resources:</strong> <br>
+            (1) Online Algorithm - Wikipedia. https://en.wikipedia.org/wiki/Online_algorithm.
+               
+    </body>
+</html>
