@@ -17,12 +17,11 @@
             }
 
             .formula-box {
-                background-color: #fff;
                 border: 1px solid #ccc;
                 padding: 20px;
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                max-width: 300px;
+                max-width: 200px;
                 width: 100%;
             }
         </style>
@@ -50,22 +49,26 @@
         1. <strong>Geometric Brownian Motion:</strong> This is a common model used in finance, which describes the behavior of stock prices. The equation is given by: <br> <br>
         <div class="formula-box">
             `dS = μS dt + σS dW`
-        </div> <br><br>
+        </div> <br>
         where: <br>
         &nbsp - `S` is the stock price <br>
         &nbsp - `μ` is the expected return <br>
         &nbsp - `σ` is the standard deviation of returns <br>
-        &nbsp - `W` is a Wiener process⁵ <br>
+        &nbsp - `W` is a Wiener process⁵ <br><br>
         2. <strong>Ornstein-Uhlenbeck Process:</strong> This process is used to model interest rates, electricity prices, and other phenomena. The equation is: <br><br>
-         `dX = θ(μ - X) dt + σ dW` <br><br>
+        <div class="formula-box">
+            `dX = θ(μ - X) dt + σ dW`
+        </div> <br>
         where: <br>
         &nbsp - `X` is the variable of interest <br>
         &nbsp - `θ` is the rate of reversion to the mean <br>
         &nbsp - `μ` is the long-term mean <br>
         &nbsp - `σ` is the standard deviation of the process <br>
-        &nbsp - `W` is a Wiener process⁵ <br>
+        &nbsp - `W` is a Wiener process⁵ <br><br>
         3. <strong>Stochastic Population Growth:</strong> This models the growth of a population with a random growth rate. The equation is: <br><br>
-         `dN = rN dt + βN dW` <br><br>
+        <div class="formula-box">
+            `dN = rN dt + βN dW`
+        </div> <br>
         where: <br>
         &nbsp - `N` is the population size <br>
         &nbsp - `r` is the average growth rate <br>
