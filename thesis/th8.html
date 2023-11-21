@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Statistics</title>
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            body{
+                background-color: bisque;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            .formula-box {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 300px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Th8: Stochastic processes and SDE's</h1>
+        
+        A stochastic process is a mathematical object that is a sequence of random variables indexed by some set⁴. It can be classified by its state space, index set, or dependence among the random variables⁴. <br>
+        Examples of stochastic processes include the Wiener process, the Poisson process, and the random walk⁴. <br>
+        Stochastic processes are used to model phenomena that evolve over time and involve a random component². <br><br>
+
+        <u>Some examples of stochastic processes are:</u> <br><br>
+
+        1. <strong>Growth of a bacterial population:</strong> The number of bacteria in a colony usually grows exponentially, but the actual growth rate can vary in a random way¹. <br>
+        2. <strong>Electrical current fluctuating due to thermal noise:</strong> The current flowing through an electrical conductor is subject to random fluctuations due to thermal noise¹. <br>
+        3. <strong>Movement of a gas molecule:</strong> The motion of a gas molecule is a random walk, which is a simple example of a stochastic process¹. <br>
+        4. <strong>Financial markets:</strong> In finance, stochastic processes are used to model the random behavior of asset prices³. <br><br>
+
+        A stochastic differential equation (SDE) is a differential equation in which one or more of the terms is a stochastic process, resulting in a solution which is also a stochastic process⁷. <br>
+        SDEs have many applications throughout pure mathematics and are used to model various behaviors of stochastic models such as stock prices, random growth models, or physical systems that are subjected to thermal fluctuations⁷. <br>
+        SDEs have a random differential that is in the most basic case random white noise calculated as the derivative of a Brownian motion or more generally a semimartingale⁷.<br> <br>
+
+        <u>Some examples of SDEs are:</u> <br> <br>
+
+        1. <strong>Geometric Brownian Motion:</strong> This is a common model used in finance, which describes the behavior of stock prices. The equation is given by: <br> 
+        `dS = μS dt + σS dW`, <br>
+        where: <br>
+        &nbsp - `S` is the stock price <br>
+        &nbsp - `μ` is the expected return <br>
+        &nbsp - `σ` is the standard deviation of returns <br>
+        &nbsp - `W` is a Wiener process⁵ <br>
+        2. <strong>Ornstein-Uhlenbeck Process:</strong> This process is used to model interest rates, electricity prices, and other phenomena. The equation is: <br>
+         `dX = θ(μ - X) dt + σ dW`, <br>
+        where: <br>
+        &nbsp -`X` is the variable of interest <br>
+        &nbsp -`θ` is the rate of reversion to the mean <br>
+        &nbsp -`μ` is the long-term mean <br>
+        &nbsp -`σ` is the standard deviation of the process <br>
+        &nbsp -`W` is a Wiener process⁵ <br>
+        3. <strong>Stochastic Population Growth:</strong> This models the growth of a population with a random growth rate. The equation is: <br>
+         `dN = rN dt + βN dW`, <br>
+        where: <br>
+        `N` is the population size <br>
+        `r` is the average growth rate <br>
+        `β` is the standard deviation of the growth rate <br>
+        `W` is a Wiener process⁶ <br><br>
+
+        In essence, stochastic processes provide a framework for understanding how systems change over time when there is some inherent randomness involved, and stochastic differential equations provide a mathematical description of such systems' dynamics. <br><br>
+        
+            <hr>
+            <strong>Some resources:</strong> <br>
+            (1) Stochastic process - Wikipedia. https://en.wikipedia.org/wiki/Stochastic_process. <br>
+            (2) What is a stochastic process? (Chapter 1) - Statistical Analysis of .... https://www.cambridge.org/core/books/statistical-analysis-of-stochastic-processes-in-time/what-is-a-stochastic-process/B7F783EF42A1CD9BAFC9AFDFDB8B7798. <br>
+            (3) Stochastic differential equation - Wikipedia. https://en.wikipedia.org/wiki/Stochastic_differential_equation. <br>
+            (4) Stochastic process | Probability, Randomness & Variability. https://www.britannica.com/science/stochastic-process. <br>
+            (5) Stochastic Process - Definition, Classification, Types and Facts - Vedantu. https://www.vedantu.com/maths/stochastic-process. <br>
+            (6) Processo stocastico - Wikipedia. https://it.wikipedia.org/wiki/Processo_stocastico. <br>
+            (7) Introduction to Stochastic Processes - Lecture Notes. https://web.ma.utexas.edu/users/gordanz/notes/introduction_to_stochastic_processes.pdf. <br>
+            (8) Stochastic Differential Equations: An Introduction with Applications .... https://link.springer.com/book/10.1007/978-3-642-14394-6. <br>
+            (9) Stochastic Diﬀerential Equations - ETH Zürich. https://ethz.ch/content/dam/ethz/special-interest/mavt/dynamic-systems-n-control/idsc-dam/Lectures/Stochastic-Systems/SDE.pdf.
+
+
+               
+    </body>
+</html>
