@@ -22,7 +22,7 @@
                 padding: 20px;
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                max-width: 200px;
+                max-width: 300px;
                 width: 100%;
             }
         </style>
@@ -51,7 +51,7 @@
         <strong><u>Unbounded Data</u>:</strong> Data streams are continuous and unending, making it impossible to store all data in memory. <br>
         <strong><u>Limited Memory</u>:</strong> Algorithms must operate within constrained memory limits. <br>
         <strong><u>Single Pass</u>:</strong> 
-        Typically, data is processed only once as it arrives and cannot be revisited. <br>
+        Typically, data is processed only once as it arrives and cannot be revisited. <br><br>
         For example we could compute the mean (average) of a data stream without storing all individual values. <br><br>
         
         <div class="formula-box">
@@ -74,9 +74,9 @@
         <strong>Initialization:</strong> Initialize count as 0 and mean as 0.0. <br>
         <strong>Update Mean:</strong> As each new value arrives, update the mean using the formula: <br>
         new_mean = old_mean + (new_value - old_mean) / count <br>
-        <strong>Get Mean:</strong> Return the current mean when required. <br>
+        <strong>Get Mean:</strong> Return the current mean when required. <br><br>
 
-        Some of the fields where online algorithms are used are: <br>
+        Some of the fields where online algorithms are used are: <br><br>
         
         <strong>Streaming Analytics:</strong> Real-time monitoring of data (e.g., network traffic, sensor data). <br>
         <strong>Financial Data Processing:</strong> Analyzing stock market data streams for trends or anomalies. <br>
