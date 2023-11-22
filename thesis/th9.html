@@ -36,13 +36,13 @@
         - The number of events in any interval of length t is a Poisson random variable with parameter λt, where λ is the rate of the process³. <br>
         This means that the probability of observing k events in an interval of length t is given by: <br>
         <div class="formula-box">
-            \[P(N(t) = k) = \frac{e^{-\lambda t} \(lambda t)^k}{t!}\]
+            \[P(N(t) = k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}\]
         </div> <br>
         - The distribution of the number of arrivals between, say, t and t+s depends only on the length of the interval s and not on the starting point t³. <br>
         - All inter-arrival times are exponentially distributed and independent with mean 1/λ. ³ <br>
         This means that the probability that the time between two events is greater than t is given by: <br>
         <div class="formula-box">
-            \[P(X > t) = \{e^{-\lambda t}}\]
+            \[P(X &gt; t) = e^{-\lambda t}\]
         </div> <br>
         - An alternative definition of a Poisson process is of a counting process whose inter-arrival times are distributed exponentially and independently³. <br>
         - The Poisson process is unique among renewal processes due to the memoryless property of the exponential distribution⁴. <br><br>
@@ -52,7 +52,7 @@
         methods that use the recursive properties of the Poisson distribution, and acceptance-rejection methods¹. <br>
         Simulating a Poisson point process on a computer is usually done in a bounded region of space, known as a simulation window, and requires two steps: appropriately creating a random number of points and then suitably placing the points in a random manner⁷. <br>
         There are also demonstrations available that show simulated paths of the Poisson process⁵. <br><br>
-        <u>Examples</u>: <br>
+        <u>Examples</u>: <br><br>
 
         - Simulating the number of customers arriving at a store in a given hour. <br>
         We can assume that the arrival rate is λ = 10 customers per hour, and generate random numbers from a Poisson distribution with mean λt, where t is the length of the interval in hours. <br>
