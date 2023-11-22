@@ -7,24 +7,32 @@
         <meta http-equiv='pragma' content='no-cache'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            body{
+                background-color: bisque;
+            }
+        </style>
     </head>
     <body>
         <h1>Esercizio 1</h1>
-        <h4>Part a</h4>
-        <h5>M systems are subject to a series of N attacks. On the x-axis, we indicate the attacks and <br> on the Y-axis we
+        <h3>Part a</h3>
+        <h4>M systems are subject to a series of N attacks. On the x-axis, we indicate the attacks and <br> on the Y-axis we
             simulate the accumulation of a "security score" (-1, 1), where the score is -1 if the system is penetrated <br>
             and 1 if the system was successfully "shielded" or protected. <br> Simulate the score "trajectories" for all systems,
-            assuming, for simplicity, a constant penetration probability p at each attack.</h5>
+            assuming, for simplicity, a constant penetration probability p at each attack.</h4>
         
         <br>
-        <h4>Part b</h4>
-        <h5>Same as before, but simulate the cumulated frequency, say f, of penetration. <br> Do the same with the relative
+        <h3>Part b</h3>
+        <h4>Same as before, but simulate the cumulated frequency, say f, of penetration. <br> Do the same with the relative
             frequency f/number of attacks and the "normalized" ratio: f/ √number of attacks. <br>
             For any of the above 4 charts (which will be actually an instance of a unique "object", from a coder's point of view), plot <br>
             a vertical histogram at some point x (day or attack number, user parameter) and at the last abscissa <br>
             value and make your personal considerations on the shape of the distributions. <br>
             Make sure that each animation is enclosed into a "frame" (a rectangle) resizable by the user, by using the mouse <br>
-            (you can make a separate, reusable, "ResizableRectangle" object for that).</h5>
+            (you can make a separate, reusable, "ResizableRectangle" object for that).</h4>
         
         <div class="centered">
             <p>
@@ -863,24 +871,24 @@
         <h1>Esercizio 2</h1>
 
         A probability space, also known as a probability triple, is a fundamental concept in probability theory. <br> It consists of three key elements: <br>
-        &nbsp - <u>Sample Space (Ω)</u>: The sample space represents the set of all possible outcomes of a random experiment or process. <br> It is denoted by Ω. The sample space is a collection of all possible events that could occur. <br>
-        &nbsp - <u>Event Space (F)</u>: The event space, denoted by F, is a collection of subsets of the sample space. <br> It includes all possible events or subsets of outcomes that we are interested in measuring the probability of. <br>
-        &nbsp - <u>Probability Measure (P)</u>: The probability measure, denoted by P, assigns a probability to each event in the event space. <br> It's a function that takes an event from the event space and maps it to a real number between 0 and 1. <br><br>
+        &nbsp - <strong><u>Sample Space (Ω)</u>:</strong> The sample space represents the set of all possible outcomes of a random experiment or process. <br> It is denoted by Ω. The sample space is a collection of all possible events that could occur. <br>
+        &nbsp - <strong><u>Event Space (F)</u>:</strong> The event space, denoted by F, is a collection of subsets of the sample space. <br> It includes all possible events or subsets of outcomes that we are interested in measuring the probability of. <br>
+        &nbsp - <strong><u>Probability Measure (P)</u>:</strong> The probability measure, denoted by P, assigns a probability to each event in the event space. <br> It's a function that takes an event from the event space and maps it to a real number between 0 and 1. <br><br>
            The probability measure satisfies the following properties: <br>
-        &nbsp    - <u>Non-negativity</u>: P(E) ≥ 0 for all events E. <br>
-        &nbsp    - <u>Normalization</u>: P(Ω) = 1, meaning the probability of the entire sample space is 1. <br>
-        &nbsp    - <u>Countable Additivity</u>: For any countable sequence of disjoint (mutually exclusive) events {Ei}, P(∪Ei) = ∑P(Ei).
+        &nbsp    - <strong><u>Non-negativity</u>:</strong> P(E) ≥ 0 for all events E. <br>
+        &nbsp    - <strong><u>Normalization</u>:</strong> P(Ω) = 1, meaning the probability of the entire sample space is 1. <br>
+        &nbsp    - <strong><u>Countable Additivity</u>:</strong> For any countable sequence of disjoint (mutually exclusive) events {Ei}, P(∪Ei) = ∑P(Ei).
         <br><br>
         Now, let's provide some simple examples:
         <br><br>
-        Example 1 - Tossing a Fair Coin: <br><br>
+        <strong>Example 1</strong> - Tossing a Fair Coin: <br><br>
 
-        &nbsp - Sample Space (Ω): {Heads, Tails} <br>
-        &nbsp - Event Space (F): {{Heads}, {Tails}, {Heads, Tails}, ∅} <br>
+        &nbsp - <u>Sample Space (Ω):</u> {Heads, Tails} <br>
+        &nbsp - <u>Event Space (F):</u> {{Heads}, {Tails}, {Heads, Tails}, ∅} <br>
         &nbsp - <u>Probability Measure (P)</u>: P({Heads}) = 0.5, P({Tails}) = 0.5, P({Heads, Tails}) = 1, P(∅) = 0 <br><br>
         In this example, we're tossing a fair coin, and the sample space represents the possible outcomes. The event space includes individual outcomes, the entire sample space, and the empty set. <br> The probability measure assigns equal probabilities to each outcome (0.5 for Heads and 0.5 for Tails). <br><br>
 
-        Example 2 - Rolling a Six-sided Die: <br><br>
+        <strong>Example 2</strong> - Rolling a Six-sided Die: <br><br>
 
         &nbsp - <u>Sample Space (Ω)</u>: {1, 2, 3, 4, 5, 6} <br>
         &nbsp - <u>Event Space (F)</u>: {{1}, {2}, {3}, {4}, {5}, {6}, {1, 2}, {1, 2, 3}, ∅} <br>
