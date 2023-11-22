@@ -44,9 +44,9 @@
 
         <strong><u>Properties</u>:</strong> <br><br>
         - The Wiener process is characterized by the following properties¹: <br>
-        &nbsp    - W_0 = 0 almost surely. <br>
-        &nbsp    - W has independent increments: for every t > 0, the future increments Wt+u - Wt, u ≥ 0, are independent of the past values Ws, s < t. <br>
-        &nbsp    - W has Gaussian increments: Wt+u - Wt is normally distributed with mean 0 and variance u, Wt+u - Wt ∼ N(0,u). <br><br>
+        &nbsp    - <script type="math/tex">W_0 = 0</script> almost surely. <br>
+        &nbsp    - W has independent increments: for every t > 0, the future increments <script type="math/tex">W_{t+u} - W_t, u \geq 0</script>, are independent of the past values Ws, s < t. <br>
+        &nbsp    - W has Gaussian increments: <script type="math/tex">W_{t+u} - W_t</script> is normally distributed with mean 0 and variance u, <script type="math/tex">W_{t+u} - W_t \sim N(0, u)</script> <br><br>
 
         The Wiener process can be derived from the fundamental solution of the heat equation, which is a partial differential equation that describes the diffusion of heat in a medium. <br>
         The solution is given by the formula: <br>
@@ -76,13 +76,13 @@
         &nbsp - W_t is a Wiener process or Brownian motion <br>
         &nbsp - μ ('the percentage drift') <br>
         &nbsp - σ ('the percentage volatility') are constants⁴ <br>
-        The solution for an arbitrary initial value S0 the above SDE has the analytic solution (under Itô's interpretation): <script type="math/tex">S_t = S_0 exp((μ - σ²/2)t + σW_t)</script>⁴<br><br>
+        The solution for an arbitrary initial value S0 the above SDE has the analytic solution (under Itô's interpretation): <script type="math/tex">S_t = S_0 exp((μ - σ²/2)t + σW_t)</script> <br><br>
 
         <strong><u>Properties</u>:</strong> <br><br>
         The GBM has the following properties: <br>
 
         - <strong>it has a log-normal distribution:</strong> <script type="math/tex">\log S_t \sim N(\log S_0 + (\mu - \frac{1}{2} \sigma^2) t, \sigma^2 t)</script> <br>
-        - <strong>it has independent returns:</strong> <script type="math/tex">\frac{S_t - S_s}{S_s} is independent of S_u for any u &lt; s &lt; t</script> <br>
+        - <strong>it has independent returns:</strong> <script type="math/tex">\frac{S_t - S_s}{S_s}</script> is independent of S_u for any u &lt; s &lt; t <br>
         - <strong>it has a constant expected return:</strong> <script type="math/tex">E[\frac{S_t - S_s}{S_s}] = e^{\mu (t-s)} - 1</script> <br> 
         - <strong>it has a constant variance of returns:</strong> <script type="math/tex">Var[\frac{S_t - S_s}{S_s}] = (e^{\sigma^2 (t-s)} - 1) e^{2 \mu (t-s)}</script> <br><br>
 
