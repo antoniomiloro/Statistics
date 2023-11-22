@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Statistics</title>
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            body{
+                background-color: bisque;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            .formula-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 200px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Th10: The Wiener process and the GBM, Derivations and simulations</h1>
+        The <strong>Wiener process</strong>, also known as <strong>Brownian motion</strong>, is a continuous-time stochastic process where the change in the variable is proportional to the square root of the time interval and a random Gaussian variable¹. <br>
+        It is often used to model random events that happen over time¹. <br>
+        A Wiener process is a real-valued continuous-time stochastic process named in honor of American mathematician Norbert Wiener¹. <br>
+        It is often also called Brownian motion due to its historical connection with the physical process of the same name originally observed by Scottish botanist Robert Brown¹. <br><br>
+
+        <strong><u>Properties</u>:</strong> <br><br>
+        - The Wiener process is characterized by the following properties¹: <br>
+        &nbsp    - W0 = 0 almost surely. <br>
+        &nbsp    - W has independent increments: for every t > 0, the future increments Wt+u - Wt, u ≥ 0, are independent of the past values Ws, s < t. <br>
+        &nbsp    - W has Gaussian increments: Wt+u - Wt is normally distributed with mean 0 and variance u, Wt+u - Wt ∼ N(0,u). <br><br>
+
+        The Wiener process can be derived from the fundamental solution of the heat equation, which is a partial differential equation that describes the diffusion of heat in a medium. <br>
+        The solution is given by the formula: <br>
+        <div class="formula-box">
+            \[u(x,t) = \frac{1}{\sqrt{4 \pi t}} e^{-\frac{x^2}{4t}}\]
+        </div> <br>
+
+        This function represents the probability density of finding a particle at position x at time t, given that it started at the origin at time 0. <br>
+        If we let X_t be the random variable that denotes the position of the particle at time t, then we have: <br>
+        <div class="formula-box">
+            \[X_t \sim N(0, 2t)\]
+        </div> <br>
+
+        To obtain the Wiener process, we simply take the difference of two independent normal variables: <br>
+        <div class="formula-box">
+            \[W_t = X_t - X_0 \sim N(0, 2t) - N(0, 0) = N(0, 2t)\]
+        </div> <br><br>
+
+        <strong><u>Simulations</u>:</strong> <br><br>
+        - There are several methods to simulate a Wiener process³. <br>
+        This Python code generates a lot of Monte Carlo simulations using the Wiener process with the SP500 data³. <br><br>
+
+        The <strong>Geometric Brownian Motion (GBM)</strong> is a type of stochastic process where the logarithm of the randomly varying quantity follows a Wiener process with drift⁴. <br>
+        It is used in mathematical finance to model stock prices in the Black–Scholes model⁴. <br><br>
+        A stochastic process St is said to follow a GBM if it satisfies the following stochastic differential equation (SDE): dSt = μSt dt + σSt dWt,
+        where: <br>
+        &nbsp - Wt is a Wiener process or Brownian motion <br>
+        &nbsp - μ ('the percentage drift') <br>
+        &nbsp - σ ('the percentage volatility') are constants⁴ <br>
+        The solution for an arbitrary initial value S0 the above SDE has the analytic solution (under Itô's interpretation): St = S0 exp((μ - σ²/2)t + σWt)⁴. <br><br>
+
+        <strong><u>Properties</u>:</strong> <br><br>
+        The GBM has the following properties: <br>
+
+        - <strong>it has a log-normal distribution:</strong> $\log S_t \sim N(\log S_0 + (\mu - \frac{1}{2} \sigma^2) t, \sigma^2 t)$. <br>
+        - <strong>it has independent returns:</strong> $\frac{S_t - S_s}{S_s}$ is independent of $S_u$ for any $u &lt; s &lt; t$ <br>
+        - <strong>it has a constant expected return:</strong> $E[\frac{S_t - S_s}{S_s}] = e^{\mu (t-s)} - 1$. <br> 
+        - <strong>it has a constant variance of returns:</strong> $Var[\frac{S_t - S_s}{S_s}] = (e^{\sigma^2 (t-s)} - 1) e^{2 \mu (t-s)}$. <br><br>
+
+        <strong><u>Simulations</u>:</strong> <br><br>
+        - There are several methods to simulate a GBM⁵. <br>
+        For example, to calculate the value at risk (VaR) of a portfolio, we can run a Monte Carlo simulation that attempts to predict the worst likely loss for a portfolio given a confidence interval over a specified time horizon⁵.
+                
+        <br><br>
+
+            <hr>
+            <strong>Some resources:</strong> <br>
+            (1) Wiener process - Wikipedia. https://en.wikipedia.org/wiki/Wiener_process.
+            (2) guiregueira/Wiener_Process_Study_Simulation - GitHub. https://github.com/guiregueira/Wiener_Process_Study_Simulation.
+            (3) Geometric Brownian motion - Wikipedia. https://en.wikipedia.org/wiki/Geometric_Brownian_motion.
+            (4) How to use Monte Carlo simulation with GBM - Investopedia. https://www.investopedia.com/articles/07/montecarlo.asp.
+            (5) Ch 1. Wiener Process (Brownian Motion). https://homepage.ntu.edu.tw/~jryanwang/courses/Financial%20Computation%20or%20Financial%20Engineering%20%28graduate%20level%29/FE_Ch01%20Wiener%20Process.pdf.
+            (6) 1 Simulating Brownian motion (BM) and geometric Brownian motion (GBM). http://www.columbia.edu/~ks20/4404-Sigman/4404-Notes-sim-BM.pdf.
+                    
+               
+    </body>
+</html>
