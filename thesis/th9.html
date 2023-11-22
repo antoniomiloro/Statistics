@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Statistics</title>
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            body{
+                background-color: bisque;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            .formula-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 200px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Th9: The Poisson Process: Meaning, Properties, Simulations</h1>
+        
+        The <strong>Poisson Process</strong> is a type of stochastic process, often used to model random events such as the arrival of customers at a shop or emails to a mail server³. <br>
+        A Poisson process is a renewal process where the interarrival intervals have an exponential distribution function⁴. The parameter λ is called the rate of the process⁴. <br><br>
+
+        <strong><u>Properties</u>:</strong> <br>
+        - The number of events in any interval of length t is a Poisson random variable with parameter λt, where λ is the rate of the process³. <br>
+        This means that the probability of observing k events in an interval of length t is given by: <br>
+        <div class="formula-box">
+            \[P(N(t) = k) = \frac{e^{-\lambda t} \(lambda t)^k}{t!}\]
+        </div>
+        - The distribution of the number of arrivals between, say, t and t+s depends only on the length of the interval s and not on the starting point t³. <br>
+        - All inter-arrival times are exponentially distributed and independent with mean 1/λ. ³ <br>
+        This means that the probability that the time between two events is greater than t is given by: <br>
+        <div class="formula-box">
+            \[P(X > t) = \{e^{-\lambda t}}\]
+        </div>
+        - An alternative definition of a Poisson process is of a counting process whose inter-arrival times are distributed exponentially and independently³. <br>
+        - The Poisson process is unique among renewal processes due to the memoryless property of the exponential distribution⁴. <br><br>
+
+        <strong><u>Simulations</u>:</strong> <br>
+        There are several methods to simulate a Poisson process, including direct methods based on the homogeneous Poisson stochastic process having exponential inter-arrival times, inversion methods that search through a table of cumulative Poisson probabilities, <br>
+        methods that use the recursive properties of the Poisson distribution, and acceptance-rejection methods¹. <br>
+        Simulating a Poisson point process on a computer is usually done in a bounded region of space, known as a simulation window, and requires two steps: appropriately creating a random number of points and then suitably placing the points in a random manner⁷. <br>
+        There are also demonstrations available that show simulated paths of the Poisson process⁵. <br><br>
+        <u>Examples</u>: <br>
+
+        - Simulating the number of customers arriving at a store in a given hour. <br>
+        We can assume that the arrival rate is λ = 10 customers per hour, and generate random numbers from a Poisson distribution with mean λt, where t is the length of the interval in hours. <br>
+        For example, if we want to simulate the number of customers in the first 15 minutes, we can use t = 0.25 and generate a random number from a Poisson distribution with mean 10 × 0.25 = 2.5. <br>
+        This can be done using the rpois function in R, as shown below: <br>
+        <div class="formula-box">
+            # Set the seed for reproducibility <br>
+            set.seed(123) <br><br>
+
+            # Simulate the number of customers in the first 15 minutes <br>
+            rpois(1, lambda = 10 * 0.25)<br>
+            #> [1] 1
+        </div>
+
+        - Simulating the time of the first earthquake in a region. <br>
+        We can assume that the earthquakes follow a Poisson process with rate λ = 0.01 earthquakes per day, and generate random numbers from an exponential distribution with mean 1/λ. <br>
+        For example, if we want to simulate the time of the first earthquake, we can generate a random number from an exponential distribution with mean 1/0.01 = 100 days. <br>
+        This can be done using the rexp function in R, as shown below: <br>
+        <div class="formula-box">
+            # Set the seed for reproducibility <br>
+            set.seed(123) <br><br>
+
+            # Simulate the time of the first earthquake <br>
+            rexp(1, rate = 0.01) <br>
+            #> [1] 52.2019
+        </div>
+
+              <hr>
+            <strong>Some resources:</strong> <br>
+            (1) 7.1 Poisson Process | Simulation and Modelling to Understand Change. https://bookdown.org/manuele_leonelli/SimBook/poisson-process.html. <br>
+            (2) 2.2: Definition and Properties of a Poisson Process. https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Signal_Processing_and_Modeling/Discrete_Stochastic_Processes_%28Gallager%29/02%3A_Poisson_Processes/2.02%3A_Definition_and_Properties_of_a_Poisson_Process. <br>
+            (3) Simulating Poisson random variables – Survey of methods. https://hpaulkeeler.com/simulating-poisson-random-variables-survey-methods/. <br>
+            (4) undefined. https://en.wikipedia.org/wiki/Poisson_point_process. <br>
+            (5) Simulating the Poisson Process - Wolfram Demonstrations Project. https://demonstrations.wolfram.com/SimulatingThePoissonProcess/. <br>
+            (6) . https://bing.com/search?q=Poisson+Process+Meaning+Properties+Simulations. <br>
+            (7) undefined. https://transp-or.epfl.ch/courses/OptSim2012/slides/05b-poisson.pdf.
+               
+    </body>
+</html>
