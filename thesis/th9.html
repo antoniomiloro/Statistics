@@ -21,7 +21,7 @@
                 padding: 20px;
                 border-radius: 8px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                max-width: 200px;
+                max-width: 400px;
                 width: 100%;
             }
         </style>
@@ -32,22 +32,22 @@
         The <strong>Poisson Process</strong> is a type of stochastic process, often used to model random events such as the arrival of customers at a shop or emails to a mail server³. <br>
         A Poisson process is a renewal process where the interarrival intervals have an exponential distribution function⁴. The parameter λ is called the rate of the process⁴. <br><br>
 
-        <strong><u>Properties</u>:</strong> <br>
+        <strong><u>Properties</u>:</strong> <br><br>
         - The number of events in any interval of length t is a Poisson random variable with parameter λt, where λ is the rate of the process³. <br>
         This means that the probability of observing k events in an interval of length t is given by: <br>
         <div class="formula-box">
             \[P(N(t) = k) = \frac{e^{-\lambda t} \(lambda t)^k}{t!}\]
-        </div>
+        </div> <br>
         - The distribution of the number of arrivals between, say, t and t+s depends only on the length of the interval s and not on the starting point t³. <br>
         - All inter-arrival times are exponentially distributed and independent with mean 1/λ. ³ <br>
         This means that the probability that the time between two events is greater than t is given by: <br>
         <div class="formula-box">
             \[P(X > t) = \{e^{-\lambda t}}\]
-        </div>
+        </div> <br>
         - An alternative definition of a Poisson process is of a counting process whose inter-arrival times are distributed exponentially and independently³. <br>
         - The Poisson process is unique among renewal processes due to the memoryless property of the exponential distribution⁴. <br><br>
 
-        <strong><u>Simulations</u>:</strong> <br>
+        <strong><u>Simulations</u>:</strong> <br><br>
         There are several methods to simulate a Poisson process, including direct methods based on the homogeneous Poisson stochastic process having exponential inter-arrival times, inversion methods that search through a table of cumulative Poisson probabilities, <br>
         methods that use the recursive properties of the Poisson distribution, and acceptance-rejection methods¹. <br>
         Simulating a Poisson point process on a computer is usually done in a bounded region of space, known as a simulation window, and requires two steps: appropriately creating a random number of points and then suitably placing the points in a random manner⁷. <br>
@@ -65,7 +65,7 @@
             # Simulate the number of customers in the first 15 minutes <br>
             rpois(1, lambda = 10 * 0.25)<br>
             #> [1] 1
-        </div>
+        </div> <br>
 
         - Simulating the time of the first earthquake in a region. <br>
         We can assume that the earthquakes follow a Poisson process with rate λ = 0.01 earthquakes per day, and generate random numbers from an exponential distribution with mean 1/λ. <br>
@@ -78,7 +78,7 @@
             # Simulate the time of the first earthquake <br>
             rexp(1, rate = 0.01) <br>
             #> [1] 52.2019
-        </div>
+        </div> <br><br>
 
               <hr>
             <strong>Some resources:</strong> <br>
