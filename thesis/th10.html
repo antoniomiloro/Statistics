@@ -24,6 +24,15 @@
                 max-width: 200px;
                 width: 100%;
             }
+
+            .formula1-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                width: 100%;
+            }
         </style>
     </head>
     <body>
@@ -52,30 +61,30 @@
         </div> <br>
 
         To obtain the Wiener process, we simply take the difference of two independent normal variables: <br>
-        <div class="formula-box">
+        <div class="formula1-box">
             \[W_t = X_t - X_0 \sim N(0, 2t) - N(0, 0) = N(0, 2t)\]
         </div> <br><br>
 
         <strong><u>Simulations</u>:</strong> <br><br>
         - There are several methods to simulate a Wiener process³. <br>
-        This Python code generates a lot of Monte Carlo simulations using the Wiener process with the SP500 data³. <br><br>
+        This Python code generates a lot of Monte Carlo simulations using the Wiener process with the SP500 data³. <br><br><br>
 
         The <strong>Geometric Brownian Motion (GBM)</strong> is a type of stochastic process where the logarithm of the randomly varying quantity follows a Wiener process with drift⁴. <br>
         It is used in mathematical finance to model stock prices in the Black–Scholes model⁴. <br><br>
-        A stochastic process St is said to follow a GBM if it satisfies the following stochastic differential equation (SDE): dSt = μSt dt + σSt dWt,
+        A stochastic process St is said to follow a GBM if it satisfies the following stochastic differential equation (SDE): <script type="math/tex">dS_t = μS_t dt + σS_t dW_t</script>, <br>
         where: <br>
-        &nbsp - Wt is a Wiener process or Brownian motion <br>
+        &nbsp - W_t is a Wiener process or Brownian motion <br>
         &nbsp - μ ('the percentage drift') <br>
         &nbsp - σ ('the percentage volatility') are constants⁴ <br>
-        The solution for an arbitrary initial value S0 the above SDE has the analytic solution (under Itô's interpretation): St = S0 exp((μ - σ²/2)t + σWt)⁴. <br><br>
+        The solution for an arbitrary initial value S0 the above SDE has the analytic solution (under Itô's interpretation): <script type="math/tex">S_t = S_0 exp((μ - σ²/2)t + σW_t)</script>⁴<br><br>
 
         <strong><u>Properties</u>:</strong> <br><br>
         The GBM has the following properties: <br>
 
-        - <strong>it has a log-normal distribution:</strong> $\log S_t \sim N(\log S_0 + (\mu - \frac{1}{2} \sigma^2) t, \sigma^2 t)$. <br>
-        - <strong>it has independent returns:</strong> $\frac{S_t - S_s}{S_s}$ is independent of $S_u$ for any $u &lt; s &lt; t$ <br>
-        - <strong>it has a constant expected return:</strong> $E[\frac{S_t - S_s}{S_s}] = e^{\mu (t-s)} - 1$. <br> 
-        - <strong>it has a constant variance of returns:</strong> $Var[\frac{S_t - S_s}{S_s}] = (e^{\sigma^2 (t-s)} - 1) e^{2 \mu (t-s)}$. <br><br>
+        - <strong>it has a log-normal distribution:</strong> <script type="math/tex">$\log S_t \sim N(\log S_0 + (\mu - \frac{1}{2} \sigma^2) t, \sigma^2 t)$</script> <br>
+        - <strong>it has independent returns:</strong> <script type="math/tex">$\frac{S_t - S_s}{S_s}$ is independent of $S_u$ for any $u &lt; s &lt; t$</script> <br>
+        - <strong>it has a constant expected return:</strong> <script type="math/tex">$E[\frac{S_t - S_s}{S_s}] = e^{\mu (t-s)} - 1$</script> <br> 
+        - <strong>it has a constant variance of returns:</strong> <script type="math/tex">$Var[\frac{S_t - S_s}{S_s}] = (e^{\sigma^2 (t-s)} - 1) e^{2 \mu (t-s)}$</script> <br><br>
 
         <strong><u>Simulations</u>:</strong> <br><br>
         - There are several methods to simulate a GBM⁵. <br>
