@@ -45,7 +45,7 @@
         <strong><u>Properties</u>:</strong> <br><br>
         - The Wiener process is characterized by the following properties¹: <br>
         &nbsp    - <script type="math/tex">W_0 = 0</script> almost surely. <br>
-        &nbsp    - W has independent increments: for every t > 0, the future increments <script type="math/tex">W_{t+u} - W_t, u \geq 0</script>, are independent of the past values Ws, s < t. <br>
+        &nbsp    - W has independent increments: for every t > 0, the future increments <script type="math/tex">W_{t+u} - W_t, u \geq 0</script>, are independent of the past values <script type="math/tex">W_s</script>, s < t. <br>
         &nbsp    - W has Gaussian increments: <script type="math/tex">W_{t+u} - W_t</script> is normally distributed with mean 0 and variance u, <script type="math/tex">W_{t+u} - W_t \sim N(0, u)</script> <br><br>
 
         The Wiener process can be derived from the fundamental solution of the heat equation, which is a partial differential equation that describes the diffusion of heat in a medium. <br>
@@ -55,7 +55,7 @@
         </div> <br>
 
         This function represents the probability density of finding a particle at position x at time t, given that it started at the origin at time 0. <br>
-        If we let X_t be the random variable that denotes the position of the particle at time t, then we have: <br>
+        If we let <script type="math/tex">X_t</script> be the random variable that denotes the position of the particle at time t, then we have: <br>
         <div class="formula-box">
             \[X_t \sim N(0, 2t)\]
         </div> <br>
@@ -71,12 +71,12 @@
 
         The <strong>Geometric Brownian Motion (GBM)</strong> is a type of stochastic process where the logarithm of the randomly varying quantity follows a Wiener process with drift⁴. <br>
         It is used in mathematical finance to model stock prices in the Black–Scholes model⁴. <br><br>
-        A stochastic process St is said to follow a GBM if it satisfies the following stochastic differential equation (SDE): <script type="math/tex">dS_t = μS_t dt + σS_t dW_t</script>, <br>
+        A stochastic process <script type="math/tex">S_t</script> is said to follow a GBM if it satisfies the following stochastic differential equation (SDE): <script type="math/tex">dS_t = μS_t dt + σS_t dW_t</script>, <br>
         where: <br>
         &nbsp - W_t is a Wiener process or Brownian motion <br>
         &nbsp - μ ('the percentage drift') <br>
         &nbsp - σ ('the percentage volatility') are constants⁴ <br>
-        The solution for an arbitrary initial value S0 the above SDE has the analytic solution (under Itô's interpretation): <script type="math/tex">S_t = S_0 exp((μ - σ²/2)t + σW_t)</script> <br><br>
+        The solution for an arbitrary initial value <script type="math/tex">S_0</script> the above SDE has the analytic solution: <script type="math/tex">S_t = S_0 exp^((μ - σ²/2)t + σW_t)</script> <br><br>
 
         <strong><u>Properties</u>:</strong> <br><br>
         The GBM has the following properties: <br>

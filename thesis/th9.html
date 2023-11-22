@@ -24,6 +24,15 @@
                 max-width: 400px;
                 width: 100%;
             }
+
+            .formula1-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                width: 100%;
+            }
         </style>
     </head>
     <body>
@@ -41,7 +50,7 @@
         - The distribution of the number of arrivals between, say, t and t+s depends only on the length of the interval s and not on the starting point t³. <br>
         - All inter-arrival times are exponentially distributed and independent with mean 1/λ. ³ <br>
         This means that the probability that the time between two events is greater than t is given by: <br>
-        <div class="formula-box">
+        <div class="formula1-box">
             \[P(X &gt; t) = e^{-\lambda t}\]
         </div> <br>
         - An alternative definition of a Poisson process is of a counting process whose inter-arrival times are distributed exponentially and independently³. <br>
