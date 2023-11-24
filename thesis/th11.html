@@ -44,14 +44,14 @@
         Donsker's Invariance Principle extends this convergence to the whole function¹. <br>
         More precisely, in its modern form, Donsker's Invariance Principle states that as random variables taking values in the Skorokhod space, the random function converges in distribution to a standard Brownian motion as the number of variables goes to infinity¹. <br><br>
 
-        The formula for the functional CLT is as follows: <br>
-        Let X_1, X_2, \dots be a sequence of i.i.d. random variables with mean zero and variance one. <br>
-        Define the partial sum process S_n(t) = \sum_{i=1}^{\lfloor nt \rfloor} X_i for t \in [0, 1], where \lfloor \cdot \rfloor denotes the floor function. Then, as n \to \infty, the process S_n(t) converges in distribution to a standard Brownian motion W(t) in the space of continuous functions on [0, 1], denoted by C[0, 1]. <br>
+        <u>The formula for the functional CLT is as follows</u>: <br>
+        Let <script type="math/tex">X_1, X_2</script>, ... be a sequence of i.i.d. random variables with mean zero and variance one. <br>
+        Define the partial sum process <script type="math/tex">S_n(t) = \sum_{i=1}^{\lfloor nt \rfloor} X_i</script> for t in [0, 1], where <script type="math/tex">\lfloor \cdot \rfloor</script> denotes the floor function. Then, as <script type="math/tex">n \to \infty</script> , the process <script type="math/tex">S_n(t)</script> converges in distribution to a standard Brownian motion <script type="math/tex">W(t)</script> in the space of continuous functions on [0, 1], denoted by C[0, 1]. <br>
         That is: <br>
         <div class="formula-box">
             \[\frac{S_n(t)}{\sqrt{n}} \xrightarrow{d} W(t) \quad \text{in } C[0, 1].\]
         </div>
-           
+        <br>
         <strong><u>Proof</u>:</strong> <br>
         As for the proof, it involves a deep understanding of measure theory, probability theory, and functional analysis. <br>
         The original proof by Donsker was not quite correct due to the problem of measurability of the functionals of discontinuous processes¹. <br>
