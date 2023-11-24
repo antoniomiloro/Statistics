@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Statistics</title>
+        <meta http-equiv='cache-control' content='no-cache'> 
+        <meta http-equiv='expires' content='0'> 
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <style>
+            body{
+                background-color: bisque;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+
+            .formula-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 200px;
+                width: 100%;
+            }
+
+            .formula1-box {
+                border: 1px solid #ccc;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Th12: Ito Integration and Calculus, Concept and Didactical Simulations</h1>
+        Itô calculus, named after Kiyosi Itô, extends the methods of calculus to stochastic processes such as Brownian motion¹. <br>
+        The central concept is the Itô stochastic integral, a stochastic generalization of the Riemann–Stieltjes integral in analysis¹. The integrands and the integrators are now stochastic processes¹. <br>
+        The Itô integral can be defined as long as the integrand H is adapted, which loosely speaking means that its value at time t can only depend on information available up until this time¹. <br>
+        Roughly speaking, one chooses a sequence of partitions of the interval from 0 to t and constructs Riemann sums¹. The limit then is taken in probability as the mesh of the partition is going to zero¹. <br>
+        Itô’s formula has the form:
+        <div class="formula-box">
+            \[f(X_t) = f(X_0) + \int_0^t f'(X_s) dX_s + \frac{1}{2} \int_0^t f''(X_s) d[X]_s\]
+        </div>
+        <br>
+        where f is a twice-differentiable function, <script type="math/tex">X_t</script> is a stochastic variable, f’ and f’’ are its first and second derivatives, and <script type="math/tex">[X]_t</script> is the quadratic variation of <script type="math/tex">X_t</script>, which measures how much <script type="math/tex">X_t</script> varies over time. <br>
+        The quadratic variation term is what makes Itô’s formula different from the usual chain rule, and it accounts for the randomness of the stochastic variable. <br>
+        In mathematical finance, the described evaluation strategy of the integral is conceptualized as that we are first deciding what to do, then observing the change in the prices¹. <br>
+        The integrand is how much stock we hold, the integrator represents the movement of the prices, and the integral is how much money we have in total including what our stock is worth, at any given moment¹. <br><br>
+
+        <strong><u>Simulations</u>:</strong> <br><br>
+        For simulations, you can think of a scenario where you have a stock, and an old-fashioned stock ticker⁴. <br>
+        Let's suppose that, at each tick, the price of the stock goes up by 1 or down by 1⁴. <br>
+        Now let <script type="math/tex">Si = Pi j=1 Rj</script> be the total amount of money you have up to and including the i-th toss⁴. If we now calculate expectations of <script type="math/tex">S_i</script> it does matter what information we have⁴. <br>
+        <script type="math/tex">E[S_i] = 0 and E[S_2] = E[R_2 + 2R_1R_2 + : : :] = i</script>. The random walk has no memory beyond where it is now. This is the Markov property⁴. <br>
+        The random walk has also the martingale property: <script type="math/tex">E[S_ijS_j; j < i] = S_j</script> ⁴. That is, the conditional expectation of your winnings at any time in the future is just the amount you already hold⁴. <br>
+        Quadratic variation: <script type="math/tex">P_i j=1(S_j S_j 1)2</script> . You either win or lose $1 after each toss, so <script type="math/tex">jS_j S_j 1j = 1</script> ⁴. Hence the quadratic variation is always i⁴. <br>
+
+        This is a simplified explanation and the actual simulations involve more complex mathematical concepts and techniques. <br>
+        If you're interested in a more detailed explanation, I recommend referring to academic resources or textbooks on probability theory and stochastic processes. 
+
+        <br><br>
+
+            <hr>
+            <strong>Some resources:</strong> <br>
+            (1) Itô calculus - Wikipedia. https://en.wikipedia.org/wiki/It%C3%B4_calculus.
+            (2) Lesson 3, Ito integral 1 Introduction - New York University. https://math.nyu.edu/~goodman/teaching/StochCalc2018/notes/Lesson3.pdf.
+            (3) Plain English explanation of Ito's integral? - Cross Validated. https://stats.stackexchange.com/questions/518286/plain-english-explanation-of-itos-integral.
+            (4) The Itô Integral - Universitetet i Oslo. https://www.uio.no/studier/emner/matnat/math/nedlagte-emner/STK4510/h15/lectures/l6-the-it%C3%B4-integral.pdf.
+            (5) Itô's lemma - Wikipedia. https://bing.com/search?q=Ito+Calculus+concept.
+            (6) Itô calculus in a nutshell - Carnegie Mellon University. https://quantum.phys.cmu.edu/QIP/ito_calculus.pdf.
+            (7) Lecture 18 : Itō Calculus - MIT OpenCourseWare. https://ocw.mit.edu/courses/18-s096-topics-in-mathematics-with-applications-in-finance-fall-2013/ef2c66c8079ba656210ad1fd4a5e2fa8_MIT18_S096F13_lecnote18.pdf.
+                
+    </body>
+</html>
