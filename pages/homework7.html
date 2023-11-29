@@ -776,8 +776,8 @@
                 //rettangolo contenitore istogramma
                 const rettangoloIstogramma_t = new rectangular(for2d.transformX(timeForHistogram_t, 0, n, rectChart.x, rectChart.width), rectChart.y, 150, rectChart.height);
                 const rettangoloIstogramma_n = new rectangular(for2d.transformX(timeForHistogram_n, 0, n, rectChart.x, rectChart.width), rectChart.y, 150, rectChart.height);
-                rettangoloIstogramma_t.draw_rectangular(ctx, "#5e0a6d", 2, [1, 1]);
-                rettangoloIstogramma_n.draw_rectangular(ctx, "#800995", 2, [1, 1]);
+                rettangoloIstogramma_t.draw_rectangular(ctx, "#0056b3", 2, [1, 1]);
+                rettangoloIstogramma_n.draw_rectangular(ctx, "#0056b3", 2, [1, 1]);
 
                 //istogrammi
                 forChart.verticalHistoFromIntervals(ctx, intervals_t, myVariate_MinView, myVariate_MaxView - myVariate_MinView, rettangoloIstogramma_t, "Silver", 1, "Silver");
