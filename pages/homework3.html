@@ -14,6 +14,39 @@
             body{
                 background-color: bisque;
             }
+
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            input, button {
+                width: 400px;
+                padding: 12px;
+                margin-bottom: 20px;
+                border: 2px solid #ccc;
+                border-radius: 6px;
+            }
+
+            button {
+                background-color: #007BFF;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
         </style>
     </head>
     <body>
@@ -34,7 +67,7 @@
             Make sure that each animation is enclosed into a "frame" (a rectangle) resizable by the user, by using the mouse <br>
             (you can make a separate, reusable, "ResizableRectangle" object for that).</h4>
         
-        <div class="centered">
+        <div class="container">
             <p>
                 <label for="M"> <b>Number of systems (M):</b></label>
                 <input type="number" id="M" value="5" min="1">
@@ -896,6 +929,14 @@
 
         In this example, we're rolling a six-sided die. The sample space represents the possible outcomes (numbers 1 through 6). <br> The event space includes individual outcomes, combinations, and the empty set. The probability measure assigns equal probabilities to each individual outcome (1/6). <br>
 
-        These examples illustrate the concept of a probability space and how it's applied to simple random experiments. <br> The sample space, event space, and probability measure are crucial for modeling and calculating probabilities in a rigorous manner.
+        These examples illustrate the concept of a probability space and how it's applied to simple random experiments. <br> The sample space, event space, and probability measure are crucial for modeling and calculating probabilities in a rigorous manner. <br><br>
+
+        <hr>
+        <strong>Some resources:</strong> <br>
+        (1) Probability space - Wikipedia. https://en.wikipedia.org/wiki/Probability_space. <br>
+        (2) Probability space | Definition, axioms, explanation - Statlect. https://www.statlect.com/glossary/probability-space. <br>
+        (3) What is the definition of a standard probability space?. https://math.stackexchange.com/questions/4122450/what-is-the-definition-of-a-standard-probability-space. <br>
+        (4) Probability Space: Simple Definition, Examples - Statistics How To. https://www.statisticshowto.com/probability-space/.
     </body>
 </html>
+
