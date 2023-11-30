@@ -14,6 +14,40 @@
             body{
                 background-color: bisque;
             }
+
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                border: black;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            input, button {
+                width: 400px;
+                padding: 12px;
+                margin-bottom: 20px;
+                border: 2px solid #ccc;
+                border-radius: 6px;
+            }
+
+            button {
+                background-color: #007BFF;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            button:hover {
+                background-color: #0056b3;
+            }
         </style>
     </head>
     <body>
@@ -23,20 +57,22 @@
             Revise and optimize you previous programs to compute the joint distribution of any number of 2,3, ...k, <br>
             continuous quantitative variables where, for each variable, the user can specify the number of subdivisions <br>
             ("class intervals") of a range containing the observed values.</h4> <br>
+        <div class="container"> 
+            <form action="#" method="post" enctype="multipart/form-data">
+                <label for="xlsxFile">Upload XLSX file:</label>
+                <input type="file" id="xlsxFile" name="xlsxFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"><br><br>
+                <input type="submit" value="Submit" id="submitButton" onclick="handleSubmit(event)">
+            </form><br><br>
             
-        <form action="#" method="post" enctype="multipart/form-data">
-            <label for="xlsxFile">Upload XLSX file:</label>
-            <input type="file" id="xlsxFile" name="xlsxFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"><br><br>
-            <input type="submit" value="Submit" id="submitButton" onclick="handleSubmit(event)">
-        </form><br><br>
-        
-        <div id="buttons"></div>
-        <div id="output">
-            <p>The possibile variables will appear here.</p>
-        </div><br><br>
-        <div id="frequencyTable">
-            <p>The frequency table will appear here.</p>
-        </div><br><br>
+            <div id="buttons"></div>
+            <div id="output">
+                <p>The possibile variables will appear here.</p>
+            </div><br><br>
+            <div id="frequencyTable">
+                <p>The frequency table will appear here.</p>
+            </div>
+        </div>    
+            <br><br>
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
         <script>
@@ -339,31 +375,27 @@
 
         <p><strong>The Law of Large Numbers (LLN)</strong> is a theorem that describes the result of performing the same experiment a large number of times. <br>
            According to the law, the average of the results obtained from a large number of trials should be close to the expected value and <br>
-           tends to become closer to the expected value as more trials are performed ⁵. <br>
+           tends to become closer to the expected value as more trials are performed. <br>
            In your case, you are simulating dice rolls and trying to illustrate the LLN through simulations in R. <br>
-           More precisely, you would like to illustrate that the cumulative distribution function of the mean converges to the function f given by f(x) = 0 if x ≤ μ and f(x) = 1 if x > μ ⁴. <br><br>
+           More precisely, you would like to illustrate that the cumulative distribution function of the mean converges to the function f given by f(x) = 0 if x ≤ μ and f(x) = 1 if x > μ. <br><br>
 
            <strong>The Central Limit Theorem (CLT)</strong> states that for sufficiently large random samples, the sample means will be approximately normally distributed. <br>
            The remarkable thing is that the original data from which you are sampling does not need to be normally distributed. <br>
-           It can be as "abnormal" as you like, so long as the sample size is sufficiently large ⁹. <br>
+           It can be as "abnormal" as you like, so long as the sample size is sufficiently large. <br>
            In your case, you are simulating dice rolls and finding the mean of each sample. <br>
            The sample means get distributed in the long run, and although the original data (the dice rolls) have a flat "uniform" distribution, <br>
-           the sample means have a bell-shaped "normal" distribution ⁹. Therefore, your simulation is related to the CLT. <br><br>
+           the sample means have a bell-shaped "normal" distribution. Therefore, your simulation is related to the CLT. <br><br>
             
            Based on the CLT, you could modify ("normalize") the "security score" by subtracting the mean and dividing by the standard deviation. <br>
            This process is called standardization or normalization. The resulting distribution will have a mean of zero and a standard deviation of one, <br>
-           which is a standard normal distribution. This transformation is useful because it allows you to compare scores from different populations with different means and standard deviations ². <br><br>
+           which is a standard normal distribution. This transformation is useful because it allows you to compare scores from different populations with different means and standard deviations. <br><br>
            <hr>
            <strong>Some resources:</strong> <br>
             (1) Law of Large Numbers - Data Science Discovery. https://discovery.cs.illinois.edu/learn/Simulation-and-Distributions/Law-of-Large-Numbers/. <br>
             (2) r - Illustrating the LLN (Law of Large Numbers) - Stack Overflow. https://stackoverflow.com/questions/44292733/illustrating-the-lln-law-of-large-numbers. <br>
             (3) The Central Limit Theorem - Introduction with Simulations and Examples. https://www.seedata.live/clt-simulation/. <br>
-            (4) Improving the Accuracy of Network Intrusion Detection with ... - Hindawi. https://www.hindawi.com/journals/scn/2021/8986243/. <br>
-            (5) Two Proofs of the Central Limit Theorem - Department of Computer .... https://www.cs.toronto.edu/~yuvalf/CLT.pdf. <br>
-            (6) Central Limit Theorem - Course. https://www.probabilitycourse.com/chapter7/7_1_2_central_limit_theorem.php. <br>
-            (7) SOCR EduMaterials Activities LawOfLargeNumbers - Socr. http://wiki.stat.ucla.edu/socr/index.php/SOCR_EduMaterials_Activities_LawOfLargeNumbers. <br>
-            (8) Simple simulation of the Law of Large Numbers - LLN in R?. https://stackoverflow.com/questions/33373872/simple-simulation-of-the-law-of-large-numbers-lln-in-r. <br>
-            (9) GitHub - josh0xA/LLN: Law of Large Numbers Simulator. https://github.com/josh0xA/LLN. <br>
-            (10) Law of Large Numbers vs Central Limit Theorem - Medium. https://medium.com/analytics-vidhya/law-of-large-numbers-vs-central-limit-theorem-7819f32c67b2. <br>
-            (11) Understanding the Central Limit Theorem the Easy Way: A Simulation .... https://www.mdpi.com/2504-3900/2/21/1322. <br>
-            (12) Simulating the central limit theorem - SAGE Journals. https://journals.sagepub.com/doi/pdf/10.1177/1536867X1801800203.</p>
+            (4) Two Proofs of the Central Limit Theorem - Department of Computer .... https://www.cs.toronto.edu/~yuvalf/CLT.pdf. <br>
+            (5) Simple simulation of the Law of Large Numbers - LLN in R?. https://stackoverflow.com/questions/33373872/simple-simulation-of-the-law-of-large-numbers-lln-in-r. <br>
+            (6) Law of Large Numbers vs Central Limit Theorem - Medium. https://medium.com/analytics-vidhya/law-of-large-numbers-vs-central-limit-theorem-7819f32c67b2. <br>
+            (7) Understanding the Central Limit Theorem the Easy Way: A Simulation .... https://www.mdpi.com/2504-3900/2/21/1322. <br>
+            (8) Simulating the central limit theorem - SAGE Journals. https://journals.sagepub.com/doi/pdf/10.1177/1536867X1801800203.</p>
