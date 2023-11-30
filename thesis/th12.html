@@ -28,10 +28,10 @@
     </head>
     <body>
         <h1>Th12: Ito Integration and Calculus, Concept and Didactical Simulations</h1>
-        Itô calculus, named after Kiyosi Itô, extends the methods of calculus to stochastic processes such as Brownian motion¹. <br>
-        The central concept is the Itô stochastic integral, a stochastic generalization of the Riemann–Stieltjes integral in analysis¹. The integrands and the integrators are now stochastic processes¹. <br>
-        The Itô integral can be defined as long as the integrand H is adapted, which loosely speaking means that its value at time t can only depend on information available up until this time¹. <br>
-        Roughly speaking, one chooses a sequence of partitions of the interval from 0 to t and constructs Riemann sums¹. The limit then is taken in probability as the mesh of the partition is going to zero¹. <br><br>
+        Itô calculus, named after Kiyosi Itô, extends the methods of calculus to stochastic processes such as Brownian motion. <br>
+        The central concept is the Itô stochastic integral, a stochastic generalization of the Riemann–Stieltjes integral in analysis. The integrands and the integrators are now stochastic processes. <br>
+        The Itô integral can be defined as long as the integrand H is adapted, which loosely speaking means that its value at time t can only depend on information available up until this time. <br>
+        Roughly speaking, one chooses a sequence of partitions of the interval from 0 to t and constructs Riemann sums. The limit then is taken in probability as the mesh of the partition is going to zero. <br><br>
         <u>Itô’s formula has the form</u>: <br>
         <div class="formula1-box">
             \[f(X_t) = f(X_0) + \int_0^t f'(X_s) dX_s + \frac{1}{2} \int_0^t f''(X_s) d[X]_s\]
@@ -39,16 +39,16 @@
         <br>
         where f is a twice-differentiable function, <script type="math/tex">X_t</script> is a stochastic variable, f’ and f’’ are its first and second derivatives, and <script type="math/tex">[X]_t</script> is the quadratic variation of <script type="math/tex">X_t</script>, which measures how much <script type="math/tex">X_t</script> varies over time. <br>
         The quadratic variation term is what makes Itô’s formula different from the usual chain rule, and it accounts for the randomness of the stochastic variable. <br>
-        In mathematical finance, the described evaluation strategy of the integral is conceptualized as that we are first deciding what to do, then observing the change in the prices¹. <br>
-        The integrand is how much stock we hold, the integrator represents the movement of the prices, and the integral is how much money we have in total including what our stock is worth, at any given moment¹. <br><br>
+        In mathematical finance, the described evaluation strategy of the integral is conceptualized as that we are first deciding what to do, then observing the change in the prices. <br>
+        The integrand is how much stock we hold, the integrator represents the movement of the prices, and the integral is how much money we have in total including what our stock is worth, at any given moment. <br><br>
 
         <strong><u>Simulations</u>:</strong> <br><br>
         For simulations, you can think of a scenario where you have a stock, and an old-fashioned stock ticker⁴. <br>
-        Let's suppose that, at each tick, the price of the stock goes up by 1 or down by 1⁴. <br>
-        Now let <script type="math/tex">Si = Pi j=1 Rj</script> be the total amount of money you have up to and including the i-th toss⁴. If we now calculate expectations of <script type="math/tex">S_i</script> it does matter what information we have⁴. <br>
-        <script type="math/tex">E[S_i] = 0</script> and <script type="math/tex">E[S_2] = E[R_2 + 2R_1R_2 + : : :] = i</script>. The random walk has no memory beyond where it is now. This is the Markov property⁴. <br>
-        The random walk has also the martingale property: <script type="math/tex">E[S_ijS_j; j < i] = S_j</script> ⁴. That is, the conditional expectation of your winnings at any time in the future is just the amount you already hold⁴. <br>
-        Quadratic variation: <script type="math/tex">P_i j=1(S_j S_j 1)2</script> . You either win or lose $1 after each toss, so <script type="math/tex">jS_j S_j 1j = 1</script> ⁴. Hence the quadratic variation is always i⁴. <br>
+        Let's suppose that, at each tick, the price of the stock goes up by 1 or down by 1. <br>
+        Now let <script type="math/tex">Si = Pi j=1 Rj</script> be the total amount of money you have up to and including the i-th toss. If we now calculate expectations of <script type="math/tex">S_i</script> it does matter what information we have. <br>
+        <script type="math/tex">E[S_i] = 0</script> and <script type="math/tex">E[S_2] = E[R_2 + 2R_1R_2 + : : :] = i</script>. The random walk has no memory beyond where it is now. This is the Markov property. <br>
+        The random walk has also the martingale property: <script type="math/tex">E[S_ijS_j; j < i] = S_j</script>. That is, the conditional expectation of your winnings at any time in the future is just the amount you already hold. <br>
+        Quadratic variation: <script type="math/tex">P_i j=1(S_j S_j 1)2</script>. You either win or lose $1 after each toss, so <script type="math/tex">jS_j S_j 1j = 1</script>. Hence the quadratic variation is always i. <br>
 
         This is a simplified explanation and the actual simulations involve more complex mathematical concepts and techniques. <br>
         If you're interested in a more detailed explanation, I recommend referring to academic resources or textbooks on probability theory and stochastic processes. 

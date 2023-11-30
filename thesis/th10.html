@@ -37,13 +37,13 @@
     </head>
     <body>
         <h1>Th10: The Wiener process and the GBM, Derivations and simulations</h1>
-        The <strong>Wiener process</strong>, also known as <strong>Brownian motion</strong>, is a continuous-time stochastic process where the change in the variable is proportional to the square root of the time interval and a random Gaussian variable¹. <br>
-        It is often used to model random events that happen over time¹. <br>
-        A Wiener process is a real-valued continuous-time stochastic process named in honor of American mathematician Norbert Wiener¹. <br>
-        It is often also called Brownian motion due to its historical connection with the physical process of the same name originally observed by Scottish botanist Robert Brown¹. <br><br>
+        The <strong>Wiener process</strong>, also known as <strong>Brownian motion</strong>, is a continuous-time stochastic process where the change in the variable is proportional to the square root of the time interval and a random Gaussian variable. <br>
+        It is often used to model random events that happen over time. <br>
+        A Wiener process is a real-valued continuous-time stochastic process named in honor of American mathematician Norbert Wiener. <br>
+        It is often also called Brownian motion due to its historical connection with the physical process of the same name originally observed by Scottish botanist Robert Brown. <br><br>
 
         <strong><u>Properties</u>:</strong> <br><br>
-        - The Wiener process is characterized by the following properties¹: <br>
+        - The Wiener process is characterized by the following properties: <br>
         &nbsp    - <script type="math/tex">W_0 = 0</script> almost surely. <br>
         &nbsp    - W has independent increments: for every t > 0, the future increments <script type="math/tex">W_{t+u} - W_t, u \geq 0</script>, are independent of the past values <script type="math/tex">W_s</script>, s < t. <br>
         &nbsp    - W has Gaussian increments: <script type="math/tex">W_{t+u} - W_t</script> is normally distributed with mean 0 and variance u, <script type="math/tex">W_{t+u} - W_t \sim N(0, u)</script> <br><br>
@@ -66,16 +66,16 @@
         </div> <br><br>
 
         <strong><u>Simulations</u>:</strong> <br><br>
-        - There are several methods to simulate a Wiener process³. <br>
-        This Python code generates a lot of Monte Carlo simulations using the Wiener process with the SP500 data³. <br><br><br>
+        - There are several methods to simulate a Wiener process. <br>
+        This Python code generates a lot of Monte Carlo simulations using the Wiener process with the SP500 data. <br><br><br>
 
-        The <strong>Geometric Brownian Motion (GBM)</strong> is a type of stochastic process where the logarithm of the randomly varying quantity follows a Wiener process with drift⁴. <br>
-        It is used in mathematical finance to model stock prices in the Black–Scholes model⁴. <br><br>
+        The <strong>Geometric Brownian Motion (GBM)</strong> is a type of stochastic process where the logarithm of the randomly varying quantity follows a Wiener process with drift. <br>
+        It is used in mathematical finance to model stock prices in the Black–Scholes model. <br><br>
         A stochastic process <script type="math/tex">S_t</script> is said to follow a GBM if it satisfies the following stochastic differential equation (SDE): <script type="math/tex">dS_t = μS_t dt + σS_t dW_t</script>, <br>
         where: <br>
         &nbsp - <script type="math/tex">W_t</script> is a Wiener process or Brownian motion <br>
         &nbsp - μ ('the percentage drift') <br>
-        &nbsp - σ ('the percentage volatility') are constants⁴ <br>
+        &nbsp - σ ('the percentage volatility') are constants <br>
         The solution for an arbitrary initial value <script type="math/tex">S_0</script> the above SDE has the analytic solution: <script type="math/tex">S_t = S_0 e^{((μ - σ²/2)t + σW_t)}</script> <br><br>
 
         <strong><u>Properties</u>:</strong> <br><br>
@@ -87,8 +87,8 @@
         - <strong>it has a constant variance of returns:</strong> <script type="math/tex">Var[\frac{S_t - S_s}{S_s}] = (e^{\sigma^2 (t-s)} - 1) e^{2 \mu (t-s)}</script> <br><br>
 
         <strong><u>Simulations</u>:</strong> <br><br>
-        - There are several methods to simulate a GBM⁵. <br>
-        For example, to calculate the value at risk (VaR) of a portfolio, we can run a Monte Carlo simulation that attempts to predict the worst likely loss for a portfolio given a confidence interval over a specified time horizon⁵.
+        - There are several methods to simulate a GBM. <br>
+        For example, to calculate the value at risk (VaR) of a portfolio, we can run a Monte Carlo simulation that attempts to predict the worst likely loss for a portfolio given a confidence interval over a specified time horizon.
                 
         <br><br>
 
