@@ -873,6 +873,25 @@
             }
         </script>
 
+        <h2>Comparison with other simulation schemes</h2>
+        <p>
+            The <strong>Euler-Maruyama method</strong> is a simple and widely used numerical method for solving stochastic differential equations (SDEs). It is based on the Euler method for ordinary differential equations, but it adds a random term to account for the stochasticity of the SDE. <br>
+            However, the Euler-Maruyama method is only accurate up to the first order in the time step, and it may introduce significant errors in some cases.<br>
+            The <strong>Milstein method</strong> is an improvement over the Euler-Maruyama method that adds a second-order correction term to the approximation. This term involves the derivative of the diffusion coefficient of the SDE, which captures the effect of the noise on the drift of the solution. <br>
+            The Milstein method is more accurate and stable than the Euler-Maruyama method, but it requires more computations and it may not be applicable to some SDEs with complex diffusion coefficients.<br> 
+            The <strong>Runge-Kutta method</strong> is a general class of numerical methods for solving ordinary differential equations that can be extended to SDEs. The basic idea is to use multiple intermediate steps to estimate the value of the solution at the next time step, and then combine them with appropriate weights. <br>
+            The Runge-Kutta method can achieve higher orders of accuracy than the Euler-Maruyama and Milstein methods, but it also requires more evaluations of the drift and diffusion coefficients, and it may not preserve some properties of the SDE, such as the positivity or boundedness of the solution.<br>   
+            The <strong>Heun's method</strong> is a special case of the Runge-Kutta method that uses two intermediate steps: one with the Euler-Maruyama approximation, and one with the drift and diffusion coefficients evaluated at the Euler-Maruyama approximation. The Heun's method is also known as the improved Euler method or the trapezoidal rule. <br>
+            It is a second-order method that is more accurate than the Euler-Maruyama method, but less accurate than the Milstein method. It is also simpler and more robust than the Milstein method, as it does not require the derivative of the diffusion coefficient.<br>  
+            The choice of the best numerical method for solving a given SDE depends on several factors, such as the complexity of the drift and diffusion coefficients, the desired accuracy and stability of the solution, the computational cost and efficiency, and the preservation of the qualitative features of the SDE. <br>
+            There is no universal method that works well for all SDEs, and different methods may have different advantages and disadvantages in different situations. Therefore, it is important to compare and test different methods before applying them to a specific problem. 
+
+        <br><br>
+        <hr>
+        <strong>Some resources:</strong> <br>
+         (1) Numerical SDE Simulation - Euler vs Milstein Methods. https://hautahi.com/sde_simulation. <br>
+         (2) Comparing the Euler, Midpoint and Runge-Kutta method. https://felix11h.github.io/blog/euler-midpoint-rk. 
+        </p>
     </body>
 
 </html>
